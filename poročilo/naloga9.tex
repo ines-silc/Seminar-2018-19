@@ -6,6 +6,7 @@
 \usepackage{amsmath}
 \usepackage{eurosym}
 \usepackage{amsfonts}
+\usepackage{hyperref}
 
 \usepackage{enumerate}
 \setlength{\parindent}{0mm}
@@ -155,7 +156,7 @@ Rešujemo enačbo oblike $E[T|M=x] = p\cdot E[T|M=x+1] + (1-p)\cdot E[T|M=x-1] +
 Rešimo najprej homogeni del. Rešujemo enačbo: $$p\cdot f(x+2) - f(x+1) + (1-p)\cdot f(x) = 0$$ s pomočjo karakterističnega polinoma dobimo enačbo: $$p\cdot  \lambda ^2 - \lambda + (1-p) = 0$$ $$\lambda _{1, 2}= \frac{1 \pm \sqrt{1 - 4p(1-p)}}{2p} = \frac{1 \pm (2p-1)}{2p}.$$
 Dobimo $\lambda _{1} = 1$ in $\lambda _{2} = \frac{1-p}{p}$. Rešitev homogene enačbe je torej oblike $A\cdot 1^x + B(\frac{1-p}{p})^x$, oziroma: $$A+ B \bigg( \frac{1-p}{p} \bigg )^x$$
 
-Ker imamo homogeno rešitev sestavljeno iz dveh delov, bomo partikularni del prav tako poiskali v dveh delih. Prvi del iščemo z nastavkom $f(x)= Cx1^x$ oziroma $f(x)= Cx$. Vstavimo v prvotno enačbo in dobimo: $$pC(x+1)-C(x+1)+(1-p)Cx=-1$$ $$Cpx+2Cp-Cx-C+Cx-Cpx=-1$$ $$C(2p-1)=-1$$ $$C=\frac{-1}{2p-1} = \frac{1}{1-2p}$$ Prvi del partikularne enačbe je: $$f(x)=\frac{x}{1-2p}$$
+Ker imamo homogeno rešitev sestavljeno iz dveh delov, bomo partikularni del prav tako poiskali v dveh delih. Prvi del iščemo z nastavkom $f(x)= Cx1^x$ oziroma $f(x)= Cx$. Vstavimo v prvotno enačbo in dobimo: $$pC(x+2)-C(x+1)+(1-p)Cx=-1$$ $$Cpx+2Cp-Cx-C+Cx-Cpx=-1$$ $$C(2p-1)=-1$$ $$C=\frac{-1}{2p-1} = \frac{1}{1-2p}$$ Prvi del partikularne enačbe je: $$f(x)=\frac{x}{1-2p}$$
 
 Drugi del iščemo z nastavkom $f(x) = D x (\frac{1-p}{p})^x$. Vstavimo v prvotno enačbo in dobimo:
 $$pD(x+2)\bigg( \frac{1-p}{p} \bigg )^{(x+2)} - D(x+1)\bigg( \frac{1-p}{p} \bigg )^{(x+1 )}+(1-p)Dx\bigg( \frac{1-p}{p} \bigg )^x = -1$$ 
@@ -171,7 +172,7 @@ Upoštevamo lahko še robna pogoja:
 \begin{enumerate}
 \item Pričakovano število iger, če smo brez denarja je 0, saj se takrat igra konča. Pogoj zapišemo v obliki $E[T|M= 0] = f(0) = 0$. Vstavimo v splošno rešitev in dobimo:
 $$A + B\bigg( \frac{1-p}{p} \bigg )^0 = 0, \quad A = -B$$
-\item Pričakovano število iger, če imamo m+n denarja je 0, saj se takrat igra konča. Pogoj zapišemo v obliki $E[T|M= m+n] = f(m+n) = 0$. Vstavimo v splošno rešitev in dobimo:\\\\
+\item Pričakovano število iger, če imamo $m+n$ denarja je 0, saj se takrat igra konča. Pogoj zapišemo v obliki $E[T|M= m+n] = f(m+n) = 0$. Vstavimo v splošno rešitev in dobimo:\\\\
 $-B + B\bigg( \frac{1-p}{p} \bigg )^{m+n}+\frac{m+n}{1-2p}+\frac{m+n}{(m+n+1)\big( \frac{1-p}{p} \big )-\big( \frac{1-p}{p} \big )^2(p(m+n)+2p)+p(m+n)-1}=0$\\
 
 $$B = \frac{\frac{m+n}{1-2p}+\frac{m+n}{(m+n+1)\big( \frac{1-p}{p} \big )-\big( \frac{1-p}{p} \big )^2(p(m+n)+2p)+p(m+n)-1}}{1-\big( \frac{1-p}{p} \big )^{m+n}}$$
@@ -202,5 +203,13 @@ Vstavimo robne pogoje:
 Pričakovano število iger, če imamo $x$ enot denarja in je verjetnost za zmago $p=\frac{1}{2}$ je: $$E[T|M=x]= (m+n)x-x^2$$
 Zanima nas pričakovano število iger, če začnemo z $m$ enotami denarja. Odgovor je:$$E[T|M=m]=(m+n)m-m^2= n\cdot m$$
 
-
+\section[Viri]{Viri}
+\begin{itemize}
+\item L.~Tehovnik, \emph{Markovske verige}, naloga pri predmetu Seminar 1, Fakulteta za matematiko in fiziko, Univerza v Ljubljani, 2013.
+\item T.~Primožič, \emph{Problem kockarjevega propada}, diplomsko delo, Fakulteta za matematiko in fiziko, Univerza v Ljubljani, 2019
+\item \emph{The Gambler's Ruin}, v: MathPages, [ogled 10.~3.~2019], dostopno na \url{https://www.mathpages.com/home/kmath084/kmath084.htm}
+\item \emph{Recurrence relation}, v: Wikipedia, The Free Encyclopedia, [ogled 10.~3.~2019], dostopno na \url{https://en.m.wikipedia.org/wiki/Recurrence_relation}.
+\item P.~Potočnik, \emph{Zapiski predavanj iz Diskretne matematike 1}, 1. izdaja, 2011, [ogled 15.~3.~2019], dostopno na \url{https://www.fmf.uni-lj.si/~potocnik/Ucbeniki/DM-Zapiski2010.pdf}.
+\item \emph{Back to the basics — gambler’s ruin}, v: Random Determinism, [ogled 18.~3.~2019], dostopno na \url{https://randomdeterminism.wordpress.com/2010/07/07/gamblers-ruin/}.
+\end{itemize}
 \end{document}
