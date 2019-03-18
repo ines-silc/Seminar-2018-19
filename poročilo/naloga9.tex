@@ -66,8 +66,8 @@ Mentor: doc. dr. Matija Vidmar
 Igralec $M$ ima $m$ enot denarja, igralec $N$ pa $n$ enot premoženja, $\{m, n\}$ $\subset$ $\mathbb{N}$. Zapored igrata igro na srečo v kateri ni neodločenih izidov; v vsaki igri dobi zmagovalec eno denarno enoto od poraženca; igralec $M$ zmaga vsakič z verjetnostjo $p \in (0, 1)$, neodvisno od preteklosti. Igranje se konča, ko eden od igralcev bankrotira. Naj bo $T$ število iger, ki je potrebnih, da eden od igralcev bankrotira.
 
 \begin{itemize}
-    \item Predpostavi, da je $T < \inf$ s.g. (*ali znaš to utemeljiti?). Določi verjetnost, da bankrotira igralec $M$.
-    \item Predpostavi, da je $E[T] < \inf$. Določi $E[T]$.
+    \item Predpostavi, da je $T < \infty$ s.g. (*ali znaš to utemeljiti?). Določi verjetnost, da bankrotira igralec $M$.
+    \item Predpostavi, da je $E[T] < \infty$. Določi $E[T]$.
 \end{itemize}
 \end{flushleft}
 
@@ -83,25 +83,35 @@ Dobimo $\lambda _{1} = 1$ in $\lambda _{2} = \frac{1-p}{p}$. Rešitev homogene e
 Ker imamo homogeno rešitev sestavljeno iz dveh delov, bomo partikularni del prav tako poiskali v dveh delih. Prvi del iščemo z nastavkom $f(x)= Cx1^x$ oziroma $f(x)= Cx$. Vstavimo v prvotno enačbo in dobimo: $$pC(x+1)-C(x+1)+(1-p)Cx=-1$$ $$Cpx+2Cp-Cx-C+Cx-Cpx=-1$$ $$C(2p-1)=-1$$ $$C=\frac{-1}{2p-1} = \frac{1}{1-2p}$$ Prvi del partikularne enačbe je: $$f(x)=\frac{x}{1-2p}$$
 
 Drugi del iščemo z nastavkom $f(x) = D x (\frac{1-p}{p})^x$. Vstavimo v prvotno enačbo in dobimo:
-$$pD(x+2)\bigg( \frac{1-p}{p} \bigg )^{(x+2)} - D(x+1)\bigg( \frac{1-p}{p} \bigg )^{(x+1 )}+(1-p)Dx\bigg( \frac{1-p}{p} \bigg )^x = -1$$ $$D \cdot \bigg( \frac{1-p}{p} \bigg )^x \cdot \bigg( px\bigg( \frac{1-p}{p} \bigg )^2 + 2p\bigg( \frac{1-p}{p} \bigg )^2 -x\bigg( \frac{1-p}{p} \bigg )-\bigg( \frac{1-p}{p} \bigg )+x-px \bigg )= -1$$ $$D = \frac{-1}{\bigg( \frac{1-p}{p} \bigg )^x \cdot \bigg( px\bigg( \frac{1-p}{p} \bigg )^2 + 2p\bigg( \frac{1-p}{p} \bigg )^2 -x\bigg( \frac{1-p}{p} \bigg )-\bigg( \frac{1-p}{p} \bigg )+x-px \bigg )}$$ Drugi del partikularne enačbe je: $$f(x) = \frac{-x  (\frac{1-p}{p})^x}{\bigg( \frac{1-p}{p} \bigg )^x \cdot \bigg( px\bigg( \frac{1-p}{p} \bigg )^2 + 2p\bigg( \frac{1-p}{p} \bigg )^2 -x\bigg( \frac{1-p}{p} \bigg )-\bigg( \frac{1-p}{p} \bigg )+x-px \bigg )}$$ $$= \frac{x}{(x+1)\bigg( \frac{1-p}{p} \bigg )-\bigg( \frac{1-p}{p} \bigg )^2(px+2p)+px-1},$$
-celotna partikularna rešitev pa je vstoa homogene in partikularne: $$f(x)=\frac{x}{1-2p}+\frac{x}{(x+1)\bigg( \frac{1-p}{p} \bigg )-\bigg( \frac{1-p}{p} \bigg )^2(px+2p)+px-1}.$$
+$$pD(x+2)\bigg( \frac{1-p}{p} \bigg )^{(x+2)} - D(x+1)\bigg( \frac{1-p}{p} \bigg )^{(x+1 )}+(1-p)Dx\bigg( \frac{1-p}{p} \bigg )^x = -1$$ 
+$$D \cdot \bigg( \frac{1-p}{p} \bigg )^x \cdot \bigg( px\bigg( \frac{1-p}{p} \bigg )^2 + 2p\bigg( \frac{1-p}{p} \bigg )^2 -x\bigg( \frac{1-p}{p} \bigg )-\bigg( \frac{1-p}{p} \bigg )+x-px \bigg )= -1$$ 
+$$D = \frac{-1}{\big( \frac{1-p}{p} \big )^x \cdot \big( px\big( \frac{1-p}{p} \big )^2 + 2p\big( \frac{1-p}{p} \big )^2 -x\big( \frac{1-p}{p} \big )-\big( \frac{1-p}{p} \big )+x-px \big )}$$ 
+\\
+Drugi del partikularne enačbe je: $$f(x) = \frac{-x  (\frac{1-p}{p})^x}{\big( \frac{1-p}{p} \big )^x \cdot \big( px\big( \frac{1-p}{p} \big )^2 + 2p\big( \frac{1-p}{p} \big )^2 -x\big( \frac{1-p}{p} \big )-\big( \frac{1-p}{p} \big )+x-px \big )}$$ $$= \frac{x}{(x+1)\big( \frac{1-p}{p} \big )-\big( \frac{1-p}{p} \big )^2(px+2p)+px-1},$$\\
+celotna partikularna rešitev pa je vstoa homogene in partikularne: $$f(x)=\frac{x}{1-2p}+\frac{x}{(x+1)\big( \frac{1-p}{p} \big )-\big( \frac{1-p}{p} \big )^2(px+2p)+px-1}.$$\\
 
-Splošna rešitev prvotne enačbe je: $$A + B\bigg( \frac{1-p}{p} \bigg )^x+\frac{x}{1-2p}+\frac{x}{(x+1)\bigg( \frac{1-p}{p} \bigg )-\bigg( \frac{1-p}{p} \bigg )^2(px+2p)+px-1}$$
+Splošna rešitev prvotne enačbe je: $$A + B\bigg( \frac{1-p}{p} \bigg )^x+\frac{x}{1-2p}+\frac{x}{(x+1)\big( \frac{1-p}{p} \big )-\big( \frac{1-p}{p} \big )^2(px+2p)+px-1}$$
 
 Upoštevamo lahko še robna pogoja:
 \begin{enumerate}
 \item Pričakovano število iger, če smo brez denarja je 0, saj se takrat igra konča. Pogoj zapišemo v obliki $E[T|M= 0] = f(0) = 0$. Vstavimo v splošno rešitev in dobimo:
 $$A + B\bigg( \frac{1-p}{p} \bigg )^0 = 0, \quad A = -B$$
-\item Pričakovano število iger, če imamo m+n denarja je 0, saj se takrat igra konča. Pogoj zapišemo v obliki $E[T|M= m+n] = f(m+n) = 0$. Vstavimo v splošno rešitev in dobimo:
-$$-B + B\bigg( \frac{1-p}{p} \bigg )^{m+n}+\frac{m+n}{1-2p}+\frac{m+n}{(m+n+1)\bigg( \frac{1-p}{p} \bigg )-\bigg( \frac{1-p}{p} \bigg )^2(p(m+n)+2p)+p(m+n)-1}=0$$
-$$B = \frac{\frac{m+n}{1-2p}+\frac{m+n}{(m+n+1)\bigg( \frac{1-p}{p} \bigg )-\bigg( \frac{1-p}{p} \bigg )^2(p(m+n)+2p)+p(m+n)-1}}{1-\bigg( \frac{1-p}{p} \bigg )^{m+n}}$$
-$$A = \frac{\frac{m+n}{1-2p}+\frac{m+n}{(m+n+1)\bigg( \frac{1-p}{p} \bigg )-\bigg( \frac{1-p}{p} \bigg )^2(p(m+n)+2p)+p(m+n)-1}}{\bigg( \frac{1-p}{p} \bigg )^{m+n}-1}$$
+\item Pričakovano število iger, če imamo m+n denarja je 0, saj se takrat igra konča. Pogoj zapišemo v obliki $E[T|M= m+n] = f(m+n) = 0$. Vstavimo v splošno rešitev in dobimo:\\\\
+$-B + B\bigg( \frac{1-p}{p} \bigg )^{m+n}+\frac{m+n}{1-2p}+\frac{m+n}{(m+n+1)\big( \frac{1-p}{p} \big )-\big( \frac{1-p}{p} \big )^2(p(m+n)+2p)+p(m+n)-1}=0$\\
+
+$$B = \frac{\frac{m+n}{1-2p}+\frac{m+n}{(m+n+1)\big( \frac{1-p}{p} \big )-\big( \frac{1-p}{p} \big )^2(p(m+n)+2p)+p(m+n)-1}}{1-\big( \frac{1-p}{p} \big )^{m+n}}$$
+
+$$A = \frac{\frac{m+n}{1-2p}+\frac{m+n}{(m+n+1)\big( \frac{1-p}{p} \big )-\big( \frac{1-p}{p} \big )^2(p(m+n)+2p)+p(m+n)-1}}{\big( \frac{1-p}{p} \big )^{m+n}-1}$$
 \end{enumerate}
 
-Pričakovano število iger, če imamo $x$ enot denarja je: $$E[ T | M = x]= \frac{\frac{m+n}{1-2p}+\frac{m+n}{(m+n+1)\bigg( \frac{1-p}{p} \bigg )-\bigg( \frac{1-p}{p} \bigg )^2(p(m+n)+2p)+p(m+n)-1}}{\bigg( \frac{1-p}{p} \bigg )^{m+n}-1}+$$ $$+\frac{\frac{m+n}{1-2p}+\frac{m+n}{(m+n+1)\bigg( \frac{1-p}{p} \bigg )-\bigg( \frac{1-p}{p} \bigg )^2(p(m+n)+2p)+p(m+n)-1}}{1-\bigg( \frac{1-p}{p} \bigg )^{m+n}}\bigg( \frac{1-p}{p} \bigg )^x+$$ $$+\frac{x}{1-2p}+\frac{x}{(x+1)\bigg( \frac{1-p}{p} \bigg )-\bigg( \frac{1-p}{p} \bigg )^2(px+2p)+px-1}$$
- Zanima nas $E[T|M=m]$???????????
+Pričakovano število iger, če imamo $x$ enot denarja je: $$E[ T | M = x]= \frac{\frac{m+n}{1-2p}+\frac{m+n}{(m+n+1)\big( \frac{1-p}{p} \big )-\big( \frac{1-p}{p} \big )^2(p(m+n)+2p)+p(m+n)-1}}{\big( \frac{1-p}{p} \big )^{m+n}-1}+$$
+
+ $$+\frac{\frac{m+n}{1-2p}+\frac{m+n}{(m+n+1)\big( \frac{1-p}{p} \big )-\big( \frac{1-p}{p} \big )^2(p(m+n)+2p)+p(m+n)-1}}{1-\big( \frac{1-p}{p} \big )^{m+n}}\big( \frac{1-p}{p} \big )^x+$$ $$+\frac{x}{1-2p}+\frac{x}{(x+1)\big( \frac{1-p}{p} \big )-\big( \frac{1-p}{p} \big )^2(px+2p)+px-1}$$ kar lahko poenostavimo na
+ Zanima nas $E[T|M=m]$, vstavimo $x=m$ v zgornjo enačbo in dobimo, da je pričakovano število iger, če začnemo z $m$ enotami denarja enako: $$E[T|M=m]=\frac{n \left(\left(\frac{1}{p}-1\right)^m-1\right)-m \left(\frac{1}{p}-1\right)^m
+   \left(\left(\frac{1}{p}-1\right)^n-1\right)}{(2 p-1)
+   \left(\left(\frac{1}{p}-1\right)^{m+n}-1\right)}$$
  \\
- Formula ne drži če je $p = \frac{1}{2}$, zato moramo to izračunati posebej. Prav tako rešujemo nehomogeno rekurzivno enačbo, ki jo zapišemo kot: $$\frac{1}{2}f(x+2)-f(x+1)+\frac{1}{2}f(x)=-1$$
+ Formula ne drži če je $p = \frac{1}{2}$, saj pride do deljenja z 0, zato moramo to izračunati posebej. Prav tako rešujemo nehomogeno rekurzivno enačbo, ki jo zapišemo kot: $$\frac{1}{2}f(x+2)-f(x+1)+\frac{1}{2}f(x)=-1$$
 
 Rešimo najprej homogeni del. Rešujemo enačbo: $$\frac{1}{2}f(x+2)-f(x+1)+\frac{1}{2}f(x)=0$$ s pomočjo karakterističnega polinoma dobimo enačbo: $$\frac{1}{2}\lambda^2-\lambda+\frac{1}{2}=0$$ Rešitev je dvojna ničla $\lambda_{1, 2}= 1$. Homogena rešitev je oblike: $$(Ax+B)\cdot 1^x=(Ax+B)$$
 
