@@ -148,6 +148,25 @@ p_m &= u_m + p_{m+1} = \\
 \end{equation*}
 Torej dobili smo verjetnost za propad igralca $M$.
 
+\subsubsection{Poseben primer}
+Vprašanje se pojavi, kaj se zgodi, če imata oba igralca enako verjetnost za zmago, torej $p = 1 - p = \frac{1}{2}$. Takrat namreč zgornji izračun ni mogoč, saj bi prišlo do deljenja z $0$. Iz tega dobimo, da je 
+$$r = \frac{1 - \frac{1}{2}}{\frac{1}{2}} = 1$$
+
+V tem primeru so $u_0, u_1, \dotso, u_n$ med seboj enaki, torej:
+$$u_k = r^k \cdot u_0 = u_0$$
+
+V tem primeru še lažje izrazimo $u_0$ na način:
+$1 = c\cdot u_0$, torej $u_0 = \frac{1}{c}$
+
+V tem primeru je naša iskana verjetnost za igralca $M$ enaka
+\begin{equation*}
+\begin{split}
+p_m &= u_0 \cdot (c - m) = \frac{c-m}{c} = \\
+		&= \frac{m + n - m}{m + n} = \frac{n}{m + n}
+\end{split} 
+\end{equation*}
+
+
 
 \subsection{Računanje $E[T]$}
 
