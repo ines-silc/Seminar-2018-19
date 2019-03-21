@@ -58,25 +58,23 @@ Mentor: doc. dr. Matija Vidmar
 
 \tableofcontents
 \vspace{20mm}
-
+\newpage
  \section[Besedilo naloge]{Besedilo naloge}
 
 
 
-Igralec $M$ ima $m$ enot denarja, igralec $N$ pa $n$ enot premoženja, $\{m, n\}$ $\subset$ $\mathbb{N}$. Zapored igrata igro na srečo v kateri ni neodločenih izidov; v vsaki igri dobi zmagovalec eno denarno enoto od poraženca; igralec $M$ zmaga vsakič z verjetnostjo $p \in (0, 1)$, neodvisno od preteklosti. Igranje se konča, ko eden od igralcev bankrotira. Naj bo $T$ število iger, ki je potrebnih, da eden od igralcev bankrotira.
+Igralec $M$ ima $m$ enot denarja, igralec $N$ pa $n$ enot premoženja, $\{m,n\}\subset \mathbb{N}$. Zapored igrata igro na srečo v kateri ni neodločenih izidov; v vsaki igri dobi zmagovalec eno denarno enoto od poraženca; igralec $M$ zmaga vsakič z verjetnostjo $p\in (0,1)$, neodvisno od preteklosti. Igranje se konča, ko eden od igralcev bankrotira. Naj bo $T$ število iger, ki so potrebne, da eden od igralcev bankrotira. 
+\begin{enumerate}[(i)]
+\item Določi verjetnost, da bankrotira igralec $M$. Zakaj je  $T<\infty$ s.g.?
+\item Predpostavi, da je $E[T]<\infty$ (za vsako izbiro $m$ in $n$). Določi $E[T]$. *Ali znaš utemeljiti, da je $E[T]<\infty$?
+\end{enumerate}
 
-\begin{itemize}
-    \item Predpostavi, da je $T < \infty$ s.g. (*ali znaš to utemeljiti?). Določi verjetnost, da bankrotira igralec $M$.
-    \item Predpostavi, da je $E[T] < \infty$. Določi $E[T]$.
-\end{itemize}
 
 
 \newpage
 
 \section[Rešitev]{Rešitev}
 \subsection{Računanje verjetnosti, da bankrotira igralec M}
-
-Število iger je manjše od $\infty$, saj če dovolj dolgo igramo igro, obstaja verjetnost, da zmagamo, ne glede na to koliko osnovnega premoženja imamo, prav tako obstaja verjetnost da zgubimo, da nam ves denar pobere nasprotnik. Igra se bo z verjetnostjo 1 oziroma skoraj gotovo torej končala.\\
 
 Če je verjetnost, da zmaga igralec $M$ enaka $p$, potem je verjetnost, da zmaga igralec $N$ enaka $1-p$. Naj bo $A_a$ dogodek, da bankrotira igralec M, če ima trenutno a denarja. Za vsako naravno ptevilo a definiramo $p_a = P(A_a)$.
 Poiskati želimo $p_m$, torej verjetnost, da propade igralec $M$, če ima $m$ denarja. 
@@ -111,7 +109,7 @@ $$u_1 = r \cdot u_0$$
 $$u_2 = r \cdot u_1 = r \cdot r \cdot u_0 = r^2 \cdot u_0$$ 
 $$\cdots $$
 $$u_a = r^a \cdot u_0$$
-\newpage
+
 
 Vemo, da če ima eden od igralcev ves denar, potem gotovo zmaga, če pa ga nima nič, potem gotovo izgubi, zato je:
 $$p_c = 0 \textrm{, kjer je } c = m + n \textrm{ in } p_0 = 1$$
@@ -172,50 +170,75 @@ p_m &= u_0 \cdot (c - m) = \frac{c-m}{c} = \\
 
 \subsection{Računanje $E[T]$}
 
-Rešujemo enačbo oblike $E[T|M=x] = p\cdot E[T|M=x+1] + (1-p)\cdot E[T|M=x-1] + 1$, kar zaradi lažjega zapisa prevedemo na obliko $f(x) = p\cdot f(x+1) + (1-p) \cdot f(x-1) + 1 ~ \textrm{oziroma} $ $$p\cdot f(x+2) - f(x+1) + (1-p)\cdot f(x) = -1$$ kjer je $f(x)=E[T|M=x]$. Rešujemo torej nehomogeno rekurzivno enačbo, katero rešitev je vsota homogene in partikularne rešitve. 
-\\
-Rešimo najprej homogeni del. Rešujemo enačbo: $$p\cdot f(x+2) - f(x+1) + (1-p)\cdot f(x) = 0$$ s pomočjo karakterističnega polinoma dobimo enačbo: $$p\cdot  \lambda ^2 - \lambda + (1-p) = 0$$ $$\lambda _{1, 2}= \frac{1 \pm \sqrt{1 - 4p(1-p)}}{2p} = \frac{1 \pm (2p-1)}{2p}.$$
-Dobimo $\lambda _{1} = 1$ in $\lambda _{2} = \frac{1-p}{p}$. Rešitev homogene enačbe je torej oblike $A\cdot 1^x + B(\frac{1-p}{p})^x$, oziroma: $$A+ B \bigg( \frac{1-p}{p} \bigg )^x$$
+Rešujemo enačbo oblike $$E[T|M=x] = p\cdot E[T|M=x+1] + (1-p)\cdot E[T|M=x-1] + 1,$$ kjer je prvotno premoženje igralca M enako x, kar zaradi lažjega zapisa prevedemo na obliko $f(x) = p\cdot f(x+1) + (1-p) \cdot f(x-1) + 1 ~ \textrm{oziroma} $ 
+\begin{equation}
+\label{prvotna rekurzivna}
+p\cdot f(x+2) - f(x+1) + (1-p)\cdot f(x) = -1
+\end{equation}
+kjer je $f(x):=E[T|M=x]$ in $x \in \mathbb{N}$. Tu smo predpostavili, da je $E[T] < \infty$, da lahko enolično zadostimo rekurzivni enačbi. 
+Rešujemo torej nehomogeno rekurzivno enačbo \footnote{Razen, ko je $p=\frac{1}{2}$, glej posebni primer \ref{Posebni primer za 1/2} } , katero rešitev je vsota homogene in ene partikularne rešitve. \\
 
-Ker imamo homogeno rešitev sestavljeno iz dveh delov, bomo partikularni del prav tako poiskali v dveh delih. Prvi del iščemo z nastavkom $f(x)= Cx1^x$ oziroma $f(x)= Cx$. Vstavimo v prvotno enačbo in dobimo: $$pC(x+2)-C(x+1)+(1-p)Cx=-1$$ $$Cpx+2Cp-Cx-C+Cx-Cpx=-1$$ $$C(2p-1)=-1$$ $$C=\frac{-1}{2p-1} = \frac{1}{1-2p}$$ Prvi del partikularne enačbe je: $$f(x)=\frac{x}{1-2p}$$
+Rešimo najprej homogeni del. Rešujemo enačbo: 
+\begin{equation}
+\label{homogena}
+p\cdot f(x+2) - f(x+1) + (1-p)\cdot f(x) = 0
+\end{equation}
+ s pomočjo karakterističnega polinoma dobimo enačbo: $$p\cdot  \lambda ^2 - \lambda + (1-p) = 0$$ $$\lambda _{1, 2}= \frac{1 \pm \sqrt{1 - 4p(1-p)}}{2p} = \frac{1 \pm (2p-1)}{2p}.$$
+Dobimo $\lambda _{1} = 1$ in $\lambda _{2} = \frac{1-p}{p}$. Rešitev enačbe (\ref{homogena}) je oblike $A\cdot 1^x + B(\frac{1-p}{p})^x$, oziroma: $$A+ B \bigg( \frac{1-p}{p} \bigg )^x $$
 
-Drugi del iščemo z nastavkom $f(x) = D x (\frac{1-p}{p})^x$. Vstavimo v prvotno enačbo in dobimo:
-$$pD(x+2)\bigg( \frac{1-p}{p} \bigg )^{(x+2)} - D(x+1)\bigg( \frac{1-p}{p} \bigg )^{(x+1 )}+(1-p)Dx\bigg( \frac{1-p}{p} \bigg )^x = -1$$ 
-$$D \cdot \bigg( \frac{1-p}{p} \bigg )^x \cdot \bigg( px\bigg( \frac{1-p}{p} \bigg )^2 + 2p\bigg( \frac{1-p}{p} \bigg )^2 -x\bigg( \frac{1-p}{p} \bigg )-\bigg( \frac{1-p}{p} \bigg )+x-px \bigg )= -1$$ 
-$$D = \frac{-1}{\big( \frac{1-p}{p} \big )^x \cdot \big( px\big( \frac{1-p}{p} \big )^2 + 2p\big( \frac{1-p}{p} \big )^2 -x\big( \frac{1-p}{p} \big )-\big( \frac{1-p}{p} \big )+x-px \big )}$$ 
-\\
-Drugi del partikularne enačbe je: $$f(x) = \frac{-x  (\frac{1-p}{p})^x}{\big( \frac{1-p}{p} \big )^x \cdot \big( px\big( \frac{1-p}{p} \big )^2 + 2p\big( \frac{1-p}{p} \big )^2 -x\big( \frac{1-p}{p} \big )-\big( \frac{1-p}{p} \big )+x-px \big )}$$ $$= \frac{x}{(x+1)\big( \frac{1-p}{p} \big )-\big( \frac{1-p}{p} \big )^2(px+2p)+px-1},$$\\
-celotna partikularna rešitev pa je vsota homogene in partikularne: $$f(x)=\frac{x}{1-2p}+\frac{x}{(x+1)\big( \frac{1-p}{p} \big )-\big( \frac{1-p}{p} \big )^2(px+2p)+px-1}.$$\\
+Partikularno rešitev iščemo z nastavkom $f(x)= Cx1^x$ oziroma $f(x)= Cx$. Vstavimo v enačbo (\ref{prvotna rekurzivna}) in dobimo: 
+\begin{equation*}
+\begin{split}
+ &~pC(x+2)-C(x+1)+(1-p)Cx=-1\\
+\Leftarrow & ~Cpx+2Cp-Cx-C+Cx-Cpx=-1 \\
+\Leftarrow & ~C(2p-1)=-1\\
+\Leftarrow & ~C=\frac{-1}{2p-1} = \frac{1}{1-2p}\\
+\end{split}
+\end{equation*}
+ 
+Partikularna rešitev je: $$f(x)=\frac{x}{1-2p}.$$
 
-Splošna rešitev prvotne enačbe je: $$A + B\bigg( \frac{1-p}{p} \bigg )^x+\frac{x}{1-2p}+\frac{x}{(x+1)\big( \frac{1-p}{p} \big )-\big( \frac{1-p}{p} \big )^2(px+2p)+px-1}$$
+Splošna rešitev\footnote{Razen, ko je $p=\frac{1}{2}$, glej posebni primer \ref{Posebni primer za 1/2} } enačbe (\ref{prvotna rekurzivna}) je: $$A + B\bigg( \frac{1-p}{p} \bigg )^x+\frac{x}{1-2p}$$
 
 Upoštevamo lahko še robna pogoja:
 \begin{enumerate}
 \item Pričakovano število iger, če smo brez denarja je 0, saj se takrat igra konča. Pogoj zapišemo v obliki $E[T|M= 0] = f(0) = 0$. Vstavimo v splošno rešitev in dobimo:
 $$A + B\bigg( \frac{1-p}{p} \bigg )^0 = 0, \quad A = -B$$
-\item Pričakovano število iger, če imamo $m+n$ denarja je 0, saj se takrat igra konča. Pogoj zapišemo v obliki $E[T|M= m+n] = f(m+n) = 0$. Vstavimo v splošno rešitev in dobimo:\\\\
-$-B + B\bigg( \frac{1-p}{p} \bigg )^{m+n}+\frac{m+n}{1-2p}+\frac{m+n}{(m+n+1)\big( \frac{1-p}{p} \big )-\big( \frac{1-p}{p} \big )^2(p(m+n)+2p)+p(m+n)-1}=0$\\
+\item Pričakovano število iger, če imamo $m+n$ denarja je 0, saj se takrat igra konča. Pogoj zapišemo v obliki $E[T|M= m+n] = f(m+n) = 0$. Vstavimo v splošno rešitev in dobimo:
+$$-B + B\bigg( \frac{1-p}{p} \bigg )^{m+n}+\frac{m+n}{1-2p}=0$$
 
-$$B = \frac{\frac{m+n}{1-2p}+\frac{m+n}{(m+n+1)\big( \frac{1-p}{p} \big )-\big( \frac{1-p}{p} \big )^2(p(m+n)+2p)+p(m+n)-1}}{1-\big( \frac{1-p}{p} \big )^{m+n}}$$
-
-$$A = \frac{\frac{m+n}{1-2p}+\frac{m+n}{(m+n+1)\big( \frac{1-p}{p} \big )-\big( \frac{1-p}{p} \big )^2(p(m+n)+2p)+p(m+n)-1}}{\big( \frac{1-p}{p} \big )^{m+n}-1}$$
+$$B = \frac{\frac{m+n}{1-2p}}{1- \left(\frac{1-p}{p}\right)^{m+n}} \Rightarrow A = \frac{\frac{m+n}{1-2p}}{\left(\frac{1-p}{p}\right)^{m+n}-1}$$
 \end{enumerate}
 
-Pričakovano število iger, če imamo $x$ enot denarja je: $$E[ T | M = x]= \frac{\frac{m+n}{1-2p}+\frac{m+n}{(m+n+1)\big( \frac{1-p}{p} \big )-\big( \frac{1-p}{p} \big )^2(p(m+n)+2p)+p(m+n)-1}}{\big( \frac{1-p}{p} \big )^{m+n}-1}+$$
+Pričakovano število iger, če imamo $x$ enot denarja je: $$E[ T | M = x]= \frac{\frac{m+n}{1-2p}}{\left(\frac{1-p}{p}\right)^{m+n}-1} + \frac{\frac{m+n}{1-2p}}{1- \left(\frac{1-p}{p}\right)^{m+n}}\bigg( \frac{1-p}{p} \bigg )^x+\frac{x}{1-2p}$$
+ Zanima nas $E[T|M=m]$, vstavimo $x=m$ v zgornjo enačbo in dobimo, da je pričakovano število iger, če začnemo z $m$ enotami denarja enako: $$E[T|M=m]=\frac{(m+n) \left(1-\left(\frac{1-p}{p}\right)^m\right)}{(1-2 p)
+   \left(\left(\frac{1-p}{p}\right)^{m+n}-1\right)}+\frac{m}{1-2 p}$$
 
- $$+\frac{\frac{m+n}{1-2p}+\frac{m+n}{(m+n+1)\big( \frac{1-p}{p} \big )-\big( \frac{1-p}{p} \big )^2(p(m+n)+2p)+p(m+n)-1}}{1-\big( \frac{1-p}{p} \big )^{m+n}}\big( \frac{1-p}{p} \big )^x+$$ $$+\frac{x}{1-2p}+\frac{x}{(x+1)\big( \frac{1-p}{p} \big )-\big( \frac{1-p}{p} \big )^2(px+2p)+px-1}$$
- Zanima nas $E[T|M=m]$, vstavimo $x=m$ v zgornjo enačbo in dobimo, da je pričakovano število iger, če začnemo z $m$ enotami denarja enako: $$E[T|M=m]=\frac{n \left(\left(\frac{1}{p}-1\right)^m-1\right)-m \left(\frac{1}{p}-1\right)^m
-   \left(\left(\frac{1}{p}-1\right)^n-1\right)}{(2 p-1)
-   \left(\left(\frac{1}{p}-1\right)^{m+n}-1\right)}$$
- \\
- Formula ne drži če je $p = \frac{1}{2}$, saj pride do deljenja z 0, zato moramo to izračunati posebej. Prav tako rešujemo nehomogeno rekurzivno enačbo, ki jo zapišemo kot: $$\frac{1}{2}f(x+2)-f(x+1)+\frac{1}{2}f(x)=-1$$
+\subsubsection{Poseben primer}
+\label{Posebni primer za 1/2}
+Formula ne drži če je $p = \frac{1}{2}$, saj pride do deljenja z 0, zato moramo to izračunati posebej. Prav tako rešujemo nehomogeno rekurzivno enačbo, ki jo zapišemo kot: 
+\begin{equation}
+\label{druga rekurzivna}
+\frac{1}{2}f(x+2)-f(x+1)+\frac{1}{2}f(x)=-1
+\end{equation}
 
-Rešimo najprej homogeni del. Rešujemo enačbo: $$\frac{1}{2}f(x+2)-f(x+1)+\frac{1}{2}f(x)=0$$ s pomočjo karakterističnega polinoma dobimo enačbo: $$\frac{1}{2}\lambda^2-\lambda+\frac{1}{2}=0$$ Rešitev je dvojna ničla $\lambda_{1, 2}= 1$. Homogena rešitev je oblike: $$(Ax+B)\cdot 1^x=(Ax+B)$$
+Rešimo najprej homogeni del. Rešujemo enačbo: $$\frac{1}{2}f(x+2)-f(x+1)+\frac{1}{2}f(x)=0$$ s pomočjo karakterističnega polinoma dobimo enačbo: 
+\begin{equation}
+\label{druga homogena}
+\frac{1}{2}\lambda^2-\lambda+\frac{1}{2}=0
+\end{equation} 
+Rešitev je dvojna ničla $\lambda_{1, 2}= 1$. Rešitev enačbe (\ref{druga homogena}) je oblike: $$(Ax+B)\cdot 1^x=Ax+B$$
 
-Partikularno rešitev iščemo z nastavkom $f(x)=C\cdot x^2\cdot 1^x= Cx^2$. Vstavimo v prvotno enačbo in dobimo:
-$$C(x+2)^2-2C(x+1)^2+Cx^2=-2$$
-$$C(x^2+4x+4)-2C(x^2+2x+1)+Cx^2=-2$$
-$$2C=-2, \quad C = -1 $$ Partikularna rešitev je $f(x)=-x^2$, splošna rešitev pa je: $$f(x)=Ax+B-x^2$$
+Partikularno rešitev iščemo z nastavkom $f(x)=C\cdot x^2\cdot 1^x= Cx^2$. Vstavimo v enačbo (\ref{druga rekurzivna}) in dobimo:
+\begin{equation*}
+\begin{split}
+ & ~~C(x+2)^2-2C(x+1)^2+Cx^2=-2\\
+\Leftarrow & ~~C(x^2+4x+4)-2C(x^2+2x+1)+Cx^2=-2\\
+\Leftarrow &  ~~C = -1 \\
+\end{split}
+\end{equation*}
+
+Partikularna rešitev je $f(x)=-x^2$, splošna rešitev enačbe (\ref{druga rekurzivna}) pa je: $$f(x)=Ax+B-x^2$$
 Vstavimo robne pogoje:
 \begin{enumerate}
 \item $f(0)=0\Rightarrow B = 0$
@@ -224,10 +247,12 @@ Vstavimo robne pogoje:
 Pričakovano število iger, če imamo $x$ enot denarja in je verjetnost za zmago $p=\frac{1}{2}$ je: $$E[T|M=x]= (m+n)x-x^2$$
 Zanima nas pričakovano število iger, če začnemo z $m$ enotami denarja. Odgovor je:$$E[T|M=m]=(m+n)m-m^2= n\cdot m$$
 
+\newpage
+
 \section[Viri]{Viri}
 \begin{itemize}
 \item L.~Tehovnik, \emph{Markovske verige}, naloga pri predmetu Seminar 1, Fakulteta za matematiko in fiziko, Univerza v Ljubljani, 2013.
-\item T.~Primožič, \emph{Problem kockarjevega propada}, diplomsko delo, Fakulteta za matematiko in fiziko, Univerza v Ljubljani, 2019
+\item T.~Primožič, \emph{Problem kockarjevega propada}, diplomsko delo, Fakulteta za matematiko in fiziko, Univerza v Ljubljani, 2010.
 \item \emph{The Gambler's Ruin}, v: MathPages, [ogled 10.~3.~2019], dostopno na \url{https://www.mathpages.com/home/kmath084/kmath084.htm}
 \item \emph{Recurrence relation}, v: Wikipedia, The Free Encyclopedia, [ogled 10.~3.~2019], dostopno na \url{https://en.m.wikipedia.org/wiki/Recurrence_relation}.
 \item P.~Potočnik, \emph{Zapiski predavanj iz Diskretne matematike 1}, 1. izdaja, 2011, [ogled 15.~3.~2019], dostopno na \url{https://www.fmf.uni-lj.si/~potocnik/Ucbeniki/DM-Zapiski2010.pdf}.
