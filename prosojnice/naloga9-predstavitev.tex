@@ -37,6 +37,24 @@ Vsota verjetnostii, da bankrotira igralec $M$, in da bankrotira igralec $N$:\\
 \end{equation*}
 
 \end{frame}
+
+\section[Poseben primer za $p = \frac{1}{2}$]{Poseben primer za $p = \frac{1}{2}$}
+\begin{frame}
+\frametitle{Poseben primer za $p = \frac{1}{2}$}
+Dobimo $$r = \frac{1 - \frac{1}{2}}{\frac{1}{2}} = 1.$$
+V tem primeru so $u_0, u_1, \dotso, u_n$ med seboj enaki, torej:
+$$u_k = r^k \cdot u_0 = u_0.$$
+Posledično še lažje izrazimo $u_0$, na način:
+$1 = c\cdot u_0$, torej $u_0 = \frac{1}{c}.$
+V tem primeru je naša iskana verjetnost za igralca $M$ enaka
+\begin{equation*}
+\begin{split}
+p_m &= u_0 \cdot (c - m) = \frac{c-m}{c} = \\
+		&= \frac{m + n - m}{m + n} = \frac{n}{m + n}.
+\end{split} 
+\end{equation*}
+\end{frame}
+
 \section[Matematično upanje za $p = \frac{1}{2}$]{Matematično upanje za $p = \frac{1}{2}$}
 \begin{frame}
 \frametitle{Matematično upanje za $p = \frac{1}{2}$}
@@ -78,6 +96,18 @@ Rešitev: $$E[T|M=x]= (m+n)x-x^2$$
 \end{frame}
 
 
+\section[Posebni primeri]{Posebni primeri}
+\begin{frame}
+\frametitle{Posebni primeri}
+\begin{enumerate}
+\item V primeru, da velja $m = n$ : $$p_m = \frac{(1-p)^m}{p^m+(1-p)^m}.$$
+\item V primeru, da premoženje enega igralca pomnožimo s konstanto, dobimo:
+$$p_m = \frac{(1-p)^{c m+n}-p^n (1-p)^{c m}}{(1-p)^{c m+n}-p^{c m+n}}$$ in 
+$$p_n = \frac{p^{c n+m}-p^m (1-p)^{c n}}{p^{c n+m}-(1-p)^{c n+m}}.$$
+\item Če gledamo limito, ko gresta $m$ in $n$ proti $\infty$ ugotovimo, da limita ne obstaja.
+\item $$p_m = \lim_{p \to 1/2}  \frac{(1-p)^{n+m} - (1-p)^m \cdot p^n}{(1-p)^{m+n} - p^{m+n}}  =\frac{n}{m + n}.$$
+\end{enumerate}
+\end{frame}
 
 
 
