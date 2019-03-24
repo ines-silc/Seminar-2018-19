@@ -152,9 +152,20 @@ p_m &= u_m + p_{m+1} = u_m + u_{m+1} + p_{m+2} = \\
 \end{equation*}
 Torej dobili smo verjetnost za propad igralca $M$.
 
-Vemo, da mora biti vsota verjetnostii, da bankrotira igralec $M$ in, da bankrotira igralec $N$, enaka $1$. Preverimo, če to res drži.
-
-
+Vemo, da mora biti vsota verjetnostii, da bankrotira igralec $M$, in da bankrotira igralec $N$, enaka $1$:
+\begin{equation*}
+\begin{split}
+&~\frac{(1-p)^{m+n}-p^m (1-p)^n}{(1-p)^{m+n}-p^{m+n}}+\frac{p^{m+n}-p^m
+   (1-p)^n}{p^{m+n}-(1-p)^{m+n}} =\\
+= &~\frac{(1-p)^{m+n}-p^m (1-p)^n}{(1-p)^{m+n}-p^{m+n}}-\frac{p^{m+n}-p^m
+   (1-p)^n}{(1-p)^{m+n}-p^{m+n}} =\\
+= &~\frac{(1-p)^{m+n}-p^m (1-p)^n-p^{m+n}+p^m
+   (1-p)^n}{(1-p)^{m+n}-p^{m+n}} =\\
+= &~\frac{(1-p)^{m+n}-p^{m+n}}{(1-p)^{m+n}-p^{m+n}} \\
+= &~1
+\end{split} 
+\end{equation*}
+\newpage
 
 \subsubsection{Poseben primer}
 \label{Posebni primer za  r = 1}
@@ -239,7 +250,7 @@ Rešimo najprej homogeni del. Rešujemo enačbo: $$\frac{1}{2}f(x+2)-f(x+1)+\fra
 \label{druga homogena}
 \frac{1}{2}\lambda^2-\lambda+\frac{1}{2}=0
 \end{equation} 
-Rešitev je dvojna ničla $\lambda_{1, 2}= 1$. Rešitev enačbe (\ref{druga homogena}) je oblike: $$(Ax+B)\cdot 1^x=Ax+B$$
+Rešitev je dvojna ničla $\lambda_{1, 2}= 1$. Rešitev enačbe (\ref{druga rekurzivna}) je oblike: $$(Ax+B)\cdot 1^x=Ax+B$$
 
 Partikularno rešitev iščemo z nastavkom $f(x)=C\cdot x^2\cdot 1^x= Cx^2$. Vstavimo v enačbo (\ref{druga rekurzivna}) in dobimo:
 \begin{equation*}
@@ -265,7 +276,7 @@ Zanima nas pričakovano število iger, če začnemo z $m$ enotami denarja. Odgov
 \begin{itemize}
 \item L.~Tehovnik, \emph{Markovske verige}, naloga pri predmetu Seminar 1, Fakulteta za matematiko in fiziko, Univerza v Ljubljani, 2013.
 \item T.~Primožič, \emph{Problem kockarjevega propada}, diplomsko delo, Fakulteta za matematiko in fiziko, Univerza v Ljubljani, 2010.
-\item \emph{The Gambler's Ruin}, v: MathPages, [ogled 10.~3.~2019], dostopno na \url{https://www.mathpages.com/home/kmath084/kmath084.htm}
+\item \emph{The Gambler's Ruin}, v: MathPages, [ogled 10.~3.~2019], dostopno na \url{https://www.mathpages.com/home/kmath084/kmath084.htm}.
 \item \emph{Recurrence relation}, v: Wikipedia, The Free Encyclopedia, [ogled 10.~3.~2019], dostopno na \url{https://en.m.wikipedia.org/wiki/Recurrence_relation}.
 \item P.~Potočnik, \emph{Zapiski predavanj iz Diskretne matematike 1}, 1. izdaja, 2011, [ogled 15.~3.~2019], dostopno na \url{https://www.fmf.uni-lj.si/~potocnik/Ucbeniki/DM-Zapiski2010.pdf}.
 \item \emph{Back to the basics — gambler’s ruin}, v: Random Determinism, [ogled 18.~3.~2019], dostopno na \url{https://randomdeterminism.wordpress.com/2010/07/07/gamblers-ruin/}.

@@ -1,0 +1,106 @@
+\documentclass[10pt]{beamer}
+\usepackage[slovene]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{mathptmx}
+\usepackage{helvet}
+\usepackage{courier}
+
+\usetheme{CambridgeUS}
+
+\begin{document}
+
+\title[Kockarjev propad ]{Kockarjev propad}
+\subtitle{Gambler's ruin}
+\author{Eva Deželak in Ines Šilc}
+\institute [FMF]{ Fakulteta za matematiko in fiziko}
+
+\begin{frame}
+	\titlepage
+\end {frame}
+\section[Posebni primeri]{Posebni primeri}
+\begin{frame}
+\section[Vsota verjetnosti]{Vsota verjetnosti}
+Vsota verjetnostii, da bankrotira igralec $M$, in da bankrotira igralec $N$:\\
+\begin{equation*}
+\begin{split}
+&~\frac{(1-p)^{m+n}-p^m (1-p)^n}{(1-p)^{m+n}-p^{m+n}}+\frac{p^{m+n}-p^m
+   (1-p)^n}{p^{m+n}-(1-p)^{m+n}} =\\
+= &~\frac{(1-p)^{m+n}-p^m (1-p)^n}{(1-p)^{m+n}-p^{m+n}}-\frac{p^{m+n}-p^m
+   (1-p)^n}{(1-p)^{m+n}-p^{m+n}} =\\
+= &~\frac{(1-p)^{m+n}-p^m (1-p)^n-p^{m+n}+p^m
+   (1-p)^n}{(1-p)^{m+n}-p^{m+n}} =\\
+= &~\frac{(1-p)^{m+n}-p^{m+n}}{(1-p)^{m+n}-p^{m+n}} \\
+= &~1
+\end{split} 
+\end{equation*}
+
+\end{frame}
+\section[Matematično upanje za $p = \frac{1}{2}$]{Matematično upanje za $p = \frac{1}{2}$}
+\begin{frame}
+\frametitle{Matematično upanje za $p = \frac{1}{2}$}
+$$E[T|M=x] = \frac{1}{2}\cdot E[T|M=x+1] + \frac{1}{2}\cdot E[T|M=x-1] + 1,$$
+\begin{equation}
+\label{druga rekurzivna}
+\frac{1}{2}f(x+2)-f(x+1)+\frac{1}{2}f(x)=-1
+\end{equation}\\
+Homogeni del:\\
+$$\frac{1}{2}f(x+2)-f(x+1)+\frac{1}{2}f(x)=0$$\\
+Karakteristični polinom:
+\begin{equation}
+\label{druga homogena}
+\frac{1}{2}\lambda^2-\lambda+\frac{1}{2}=0
+\end{equation} \\
+Rešitev je dvojna ničla $\lambda_{1, 2}= 1$. Rešitev enačbe (\ref{druga rekurzivna}) je oblike:\\ $$(Ax+B)\cdot 1^x=Ax+B$$
+\end{frame}
+
+\begin{frame}
+Nastavek za iskanje partikularne rešitve: $f(x)=C\cdot x^2\cdot 1^x= Cx^2$
+ Vstavimo v enačbo (\ref{druga rekurzivna}) in dobimo:
+\begin{equation*}
+\begin{split}
+ & ~~C(x+2)^2-2C(x+1)^2+Cx^2=-2\\
+\Leftarrow & ~~C(x^2+4x+4)-2C(x^2+2x+1)+Cx^2=-2\\
+\Leftarrow &  ~~C = -1 \\
+\end{split}
+\end{equation*}
+
+Partikularna rešitev je $f(x)=-x^2$, splošna rešitev enačbe (\ref{druga rekurzivna}) pa je: $$f(x)=Ax+B-x^2$$
+
+Vstavimo robne pogoje:
+\begin{enumerate}
+\item $f(0)=0\Rightarrow B = 0$
+\item $f(m+n)=0 \Rightarrow A = m+n$
+\end{enumerate}
+Rešitev: $$E[T|M=x]= (m+n)x-x^2$$
+Če začnemo z $m$ enotami denarja:$$E[T|M=m]=(m+n)m-m^2= n\cdot m$$
+\end{frame}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}
