@@ -76,63 +76,66 @@ Igralec $M$ ima $m$ enot denarja, igralec $N$ pa $n$ enot premoženja, $\{m,n\}\
 \section[Rešitev]{Rešitev}
 \subsection{Računanje verjetnosti, da bankrotira igralec M}
 
-Če je verjetnost, da zmaga igralec $M$ enaka $p$, potem je verjetnost, da zmaga igralec $N$ enaka $1-p$. Naj bo $A_a$ dogodek, da bankrotira igralec M, če ima trenutno a denarja. Za vsako naravno ptevilo a definiramo $p_a = P(A_a)$.
+Če je verjetnost, da zmaga igralec $M$ enaka $p$, potem je verjetnost, da zmaga igralec $N$ enaka $1-p$. Naj bo $A_a$ dogodek, da bankrotira igralec M, če začne z $a$ denarja, nasprotnik pa z $m + n - a$ denarja, kjer je $ a \in \{ 0, \dotso , m + n\}$. Za vsako število $a$, kjer je $ a \in \{ 0, \dotso , m + n\}$,  definiramo $p_a = P(A_a)$.
 Poiskati želimo $p_m$, torej verjetnost, da propade igralec $M$, če ima $m$ denarja. 
 \\
 
 Naši hipotezi sta:
 \\
-$H$ - prvi igralec v naslednjem krogu zmaga (torej dobi 1 od drugega igralca)
+$H$ - igralec M v prvem krogu zmaga (torej dobi 1 od igralca N)
 \\
-$H^C$ - prvi igralec v naslednjem krogu izgubi (torej da 1 drugemu igralcu)
-\\
-
-Verjetnost, da igralec $M$ propade, če ima $a$ denarja je enaka:
-\\
-$$P(A_a) = P(A_a / H) \cdot P(H) + P(A_a / H^C) \cdot P(H^C)$$ iz česar sledi
-$$p_a = P_{a+1} \cdot p + p_{a-1} \cdot (1 - p) $$
-$$(p + 1 -p) \cdot p_a = P_{a+1} \cdot p + p_{a-1} \cdot (1 - p) $$
-$$ p \cdot p_a + (1 - p) \cdot p_a = p_{a+1} \cdot p + p_{a-1} \cdot (1 - p) $$
-$$p \cdot p_a - P_{a+1} \cdot p = p_{a-1} - (1-p) \cdot p_a$$
-$$p \cdot (p_a - p_{a+1}) = (1-p) \cdot (p_{a-1} - p_a)$$
+$H^C$ - igralec M v naslednjem krogu izgubi (torej da 1 igralcu N)
 \\
 
-Sedaj uvedemo novo oznako: $u_a = p_a - p_{a+1}$. Torej velja tudi $u_{a-1} = p_{a-1} - p_a$, zato sledi
-$$p \cdot u_a = (1 - p) \cdot u_{a-1}$$
-Torej $$u_a = \frac{1-p}{p} \cdot u_{a-1}$$
+Verjetnost, da igralec $M$ propade, če ima $a$ denarja je enaka
+\\
+$$P(A_a) = P(A_a \textbackslash  H) \cdot P(H) + P(A_a \textbackslash  H^C) \cdot P(H^C),$$
+ iz česar sledi, za $ a \in \{ 0, \dotso , m + n\}$,
+\begin{equation*}
+\begin{split}
+p_a = p_{a+1} \cdot p + p_{a-1} \cdot (1 - p) &~ \Rightarrow \\
+(p + 1 -p) \cdot p_a = p_{a+1} \cdot p + p_{a-1} \cdot (1 - p) &~ \Rightarrow \\
+ p \cdot p_a + (1 - p) \cdot p_a = p_{a+1} \cdot p + p_{a-1} \cdot (1 - p) &~ \Rightarrow \\
+p \cdot p_a - p_{a+1} \cdot p = (1 - p) \cdot  p_{a-1} - (1-p) \cdot p_a &~ \Rightarrow \\
+p \cdot (p_a - p_{a+1}) = (1-p) \cdot (p_{a-1} - p_a). &~
+\end{split}
+\end{equation*}
 
-Če sedaj uvedemo še oznako $r=\frac{1-p}{p}$, dobimo
-$$u_a = r \cdot u_{a-1}$$
+
+Sedaj uvedemo novo oznako: $u_a = p_a - p_{a+1}$, za  $ a \in \{ 0, \dotso , m + n\}$. Torej velja tudi $u_{a-1} = p_{a-1} - p_a$, zato sledi, da je
+$$p \cdot u_a = (1 - p) \cdot u_{a-1}.$$
+Torej $$u_a = \frac{1-p}{p} \cdot u_{a-1}.$$
+
+Če sedaj uvedemo še oznako $r:=\frac{1-p}{p}$, dobimo
+$$u_a = r \cdot u_{a-1}.$$
 
 Od tod lahko izrazimo vse člene z začetnim (torej z $u_0$):
 $$u_1 = r \cdot u_0$$
 $$u_2 = r \cdot u_1 = r \cdot r \cdot u_0 = r^2 \cdot u_0$$ 
 $$\cdots $$
-$$u_a = r^a \cdot u_0$$
-
+$$u_a = r^a \cdot u_0$$ za $ a \in \{ 0, \dotso , m + n\}.$
 
 Vemo, da če ima eden od igralcev ves denar, potem gotovo zmaga, če pa ga nima nič, potem gotovo izgubi, zato je:
-$$p_c = 0 \textrm{, kjer je } c = m + n \textrm{ in } p_0 = 1$$
+$$p_c = 0 \textrm{, kjer je } c := m + n \textrm{ in } p_0 = 1.$$
 
-Sedaj lahko najprej $u_0$ izrazimo z začetnimi podatki:
+Sedaj lahko najprej $u_0$ izrazimo z začetnimi podatki \footnote{Razen, ko je $r = 1$, glej posebni primer \ref{Posebni primer za r = 1}} :
 \begin{equation*}
 \begin{split}
-1 = p_0 - p_c &= (p_0 - p_1) + (p_1 - p_2) + \cdots +               (p_{c-1} - p_c) = \\
+1 = p_0 - p_c &= (p_0 - p_1) + (p_1 - p_2) + \cdots + (p_{c-1} - p_c) = \\
         &= u_0 + u_1 + u_2 + \cdots + u_{c-1} = \\
         &= u_0 + r \cdot u_0 + r^2 \cdot u_0 + \cdots + r^{c-1} \cdot u_0 = \\
         &= u_0 \cdot (1 + r + r^2 + \cdots + r^{c-1}) = \\
-        &= u_o \cdot \frac{r^c - 1}{r-1}
+        &= u_o \cdot \frac{r^c - 1}{r-1}  
 \end{split}
-\end{equation*} 
+\end{equation*}  
 
-Iz tega sledi $$u_0 = \frac{r-1}{r^c -1}$$
+Iz tega sledi $$u_0 = \frac{r-1}{r^c -1}.$$
 
+\newpage
 Sedaj lahko izračunamo verjetnost za propad prvega igralca (vemo, da je $u_m = p_m - p_{m+1}$):
 \begin{equation*}
 \begin{split}
-p_m &= u_m + p_{m+1} = \\
-    &= u_m + u_{m+1} + p_{m+2} = \\
-    &= u_m + u_{m+1} + u_{m+2} + p_{m+3} = \\
+p_m &= u_m + p_{m+1} = u_m + u_{m+1} + p_{m+2} = \\
     &= u_m + u_{m+1} + u_{m+2} + u_{m+3} + \cdots + u_{m+n-1} + p_{m+n} = \\
     &= u_m + u_m \cdot r + u_m \cdot r^2 + \cdots + u_m \cdot r^{n-1} + 0 = \\
     &= u_m + u_m \cdot \frac{1-p}{p} + u_m \cdot (\frac{1-p}{p})^2 + u_m \cdot (\frac{1-p}{p})^3 + \cdots + u_m \cdot (\frac{1-p}{p})^{n-1} = \\
@@ -143,28 +146,36 @@ p_m &= u_m + p_{m+1} = \\
     &= \frac{(\frac{1-p}{p})^n - 1}{(\frac{1-p}{p})^{m+n} -1} \cdot (\frac{1-p}{p})^m 
     = \frac{(\frac{1-p}{p})^{m+n} - (\frac{1-p}{p})^m}{(\frac{1-p}{p})^{m+n} -1} = \\
     &= \frac{\frac{(1-p)^{n+m}}{p^n} - (1-p)^m}{\frac{(1-p)^{n+m}}{p^n} - p^m} = 
-    \frac{(1-p)^{n+m} - (1-p)^m \cdot p^n}{(1-p)^{m+n} - p^{m+n}}
+    \frac{(1-p)^{n+m} - (1-p)^m \cdot p^n}{(1-p)^{m+n} - p^{m+n}}.
 \end{split} 
 \end{equation*}
 Torej dobili smo verjetnost za propad igralca $M$.
 
+Vemo, da mora biti vsota verjetnostii, da bankrotira igralec $M$ in, da bankrotira igralec $N$, enaka $1$. Preverimo, če to res drži.
+
+
+
 \subsubsection{Poseben primer}
+\label{Posebni primer za  r = 1}
 Vprašanje se pojavi, kaj se zgodi, če imata oba igralca enako verjetnost za zmago, torej $p = 1 - p = \frac{1}{2}$. Takrat namreč zgornji izračun ni mogoč, saj bi prišlo do deljenja z $0$. Iz tega dobimo, da je 
-$$r = \frac{1 - \frac{1}{2}}{\frac{1}{2}} = 1$$
+$$r = \frac{1 - \frac{1}{2}}{\frac{1}{2}} = 1.$$
 
 V tem primeru so $u_0, u_1, \dotso, u_n$ med seboj enaki, torej:
-$$u_k = r^k \cdot u_0 = u_0$$
+$$u_k = r^k \cdot u_0 = u_0.$$
 
-V tem primeru še lažje izrazimo $u_0$ na način:
-$1 = c\cdot u_0$, torej $u_0 = \frac{1}{c}$
+Posledično še lažje izrazimo $u_0$, na način:
+$1 = c\cdot u_0$, torej $u_0 = \frac{1}{c}.$
 
 V tem primeru je naša iskana verjetnost za igralca $M$ enaka
 \begin{equation*}
 \begin{split}
 p_m &= u_0 \cdot (c - m) = \frac{c-m}{c} = \\
-		&= \frac{m + n - m}{m + n} = \frac{n}{m + n}
+		&= \frac{m + n - m}{m + n} = \frac{n}{m + n}.
 \end{split} 
 \end{equation*}
+
+Ponovno mora veljati, da je vsota verjetnosti, da bankrotira igralec $M$ in, da bankrotira igralec $N$ enaka $1$, je pa izračun v tem primeru veliko krajši. Torej: 
+$$\frac{n}{m + n} + \frac{m}{m + n} = \frac{n + m}{m+ n} = 1.$$
 
 
 
