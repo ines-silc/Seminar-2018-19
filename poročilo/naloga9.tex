@@ -7,6 +7,8 @@
 \usepackage{eurosym}
 \usepackage{amsfonts}
 \usepackage{hyperref}
+\usepackage{tikz}
+
 
 \usepackage{enumerate}
 \setlength{\parindent}{0mm}
@@ -188,12 +190,61 @@ p_m &= u_0 \cdot (c - m) = \frac{c-m}{c} = \\
 
 Ponovno mora veljati, da je vsota verjetnosti, da bankrotira igralec $M$ in, da bankrotira igralec $N$ enaka $1$, je pa izračun v tem primeru veliko krajši. Torej: 
 $$\frac{n}{m + n} + \frac{m}{m + n} = \frac{n + m}{m+ n} = 1.$$
-\\
 
 
 \subsection{Računanje $E[T]$}
+\subsubsection{Predpostavka, da je $E[T] < \infty$}
+Razmislimo najprej zakaj je $E[T] <\infty$. Če lahko čas $T$, ko se igra konča navzgor omejimo s časom $\widetilde{T}$, katerega upanje lahko lažje izračunamo in dokažemo, da je končno, bo sledilo, da je tudi $E[T]$ končna. Vsakič, ko vidimo $m+n-1$ zaporednih dobitkov igralca M se je igra gotovo končala, saj je v najslabšem primeru začel z 1 enoto denarja in je blo potrebnih $m+n-1$ iger, da se je tekma zaključila.\\
 
-Rešujemo enačbo oblike $$E[T|M=x] = p\cdot E[T|M=x+1] + (1-p)\cdot E[T|M=x-1] + 1,$$ kjer je prvotno premoženje igralca M enako x, kar zaradi lažjega zapisa prevedemo na obliko $f(x) = p\cdot f(x+1) + (1-p) \cdot f(x-1) + 1 ~ \textrm{oziroma} $ 
+Definirajmo: 
+\[
+X_n := \left\{
+\begin{array}{rl}
+1; & \textrm{če zmaga igralec M}\\
+0; & \textrm{če zmaga igralec N}
+\end{array}
+\right.
+\]
+
+Tako lahko navzgor ocenimo $T$:
+$$T \leq inf\{ l \in \mathbb{N}: \textrm{v zaporedju } X_1, \dots, X_l \textrm{ smo videli } m+n \textrm{ zaporednih enic} \leq$$ 
+$$
+\begin{array} {lll} 
+\leq (m+n)\cdot inf\{ l \in \mathbb{N}:& X_1, \dots, X_{m+n}; & \textrm{vsebuje same enice, ali} \\ 
+&X_{m+n+1}, \dots, X_{2(m+n)};& \textrm{vsebuje same enice, ali}\\
+&\dots \\
+&X_{(l-1)(m+n)+1}, \dots, X_{l(m+n)}; & \textrm{vsebuje same enice}
+\end{array} \Bigg\} = \widetilde{T}$$
+
+Časovno os razdelimo na intervale dolžine $m+n$, znotraj katerih čakamo, da zaporedje $\{X_l\}_{l \in \mathbb{N}}$ vsebuje same enice:
+\begin{center}
+\begin{tikzpicture}
+    % draw horizontal line   
+    \draw (0,0) -- (10,0);
+	\draw[dotted] (10,0) -- (11,0);
+	\draw (11, 0) -- (12, 0);
+ 
+    % draw vertical lines
+    \foreach \x in {0,3,6,9,12}
+      \draw (\x cm,3pt) -- (\x cm,-3pt);
+
+    % draw nodes
+    \draw (0,0) node[below=3pt] {$ 0 $} node[above=3pt] {$   $};
+    \draw (3,0) node[below=3pt] {$m+n$} node[above=3pt] {$  $};
+    \draw (6,0) node[below=3pt] {$2(m+n)$} node[above=3pt] {$  $};
+    \draw (9,0) node[below=3pt] {$3(m+n)$} node[above=3pt] {$ $};
+	\draw (12,0) node[below=3pt] {$l(m+n)$} node[above=3pt] {$ $};
+\end{tikzpicture}
+\end{center}
+
+Vsako zaporedje $\{X_l\}_{l \in \mathbb{N}}$ v $\widetilde{T}$ je zaporedje Bernoullijevih spremenljivk, saj pri upanju računamo verjetnost, da se v $m+n$ ponovitvah dogodek zgodi natanko $m+n$-krat. Torej $X_l$\textasciitilde $Ber(p^{m+n})$, medtem ko je zaporedje 
+$\{X_l\}_{l \in \mathbb{N}}$ porazdeljeno geometrijsko, torej $\{X_l\}_{l \in \mathbb{N}}$\textasciitilde $Geom(p^{m+n})$, saj čakamo, da se dogodek, ko zaporedje vsebuje same enice, zgodil natanko enkrat. Sledi:
+
+$$E[Geom(p^{m+n})]=\frac{1}{p^{(m+n)}} \Longrightarrow E[\widetilde{T}] = \frac{m+n}{p^{(m+n)}} < \infty$$
+
+\newpage
+\subsubsection{Računanje $E[T]$ za vsak $m$ in $n$}
+Za dejanski izračun matematičnega upanje števila iger rešujemo enačbo oblike $$E[T|M=x] = p\cdot E[T|M=x+1] + (1-p)\cdot E[T|M=x-1] + 1,$$ kjer je prvotno premoženje igralca M enako x, kar zaradi lažjega zapisa prevedemo na obliko $f(x) = p\cdot f(x+1) + (1-p) \cdot f(x-1) + 1 ~ \textrm{oziroma} $ 
 \begin{equation}
 \label{prvotna rekurzivna}
 p\cdot f(x+2) - f(x+1) + (1-p)\cdot f(x) = -1,
