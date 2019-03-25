@@ -213,22 +213,21 @@ $$
 \leq (m+n)\cdot inf\{ l \in \mathbb{N}:& X_1, \dots, X_{m+n}; & \textrm{vsebuje same enice, ali} \\ 
 &X_{m+n+1}, \dots, X_{2(m+n)};& \textrm{vsebuje same enice, ali}\\
 &\dots \\
-&X_{(l-1)(m+n)+1}, \dots, X_{l(m+n)}; & \textrm{vsebuje same enice}
-\end{array} \Bigg\} = \widetilde{T}$$
+&X_{(l-1)(m+n)+1}, \dots, X_{l(m+n)}; & \textrm{vsebuje same enice}\}=
+\end{array}$$
+$~~= (m+n)\cdot G_l =: \widetilde{T}$\\
 
 Časovno os razdelimo na intervale dolžine $m+n$, znotraj katerih čakamo, da zaporedje $\{X_l\}_{l \in \mathbb{N}}$ vsebuje same enice:
 \begin{center}
 \begin{tikzpicture}
-    % draw horizontal line   
+
     \draw (0,0) -- (10,0);
 	\draw[dotted] (10,0) -- (11,0);
 	\draw (11, 0) -- (12, 0);
  
-    % draw vertical lines
     \foreach \x in {0,3,6,9,12}
       \draw (\x cm,3pt) -- (\x cm,-3pt);
 
-    % draw nodes
     \draw (0,0) node[below=3pt] {$ 0 $} node[above=3pt] {$   $};
     \draw (3,0) node[below=3pt] {$m+n$} node[above=3pt] {$  $};
     \draw (6,0) node[below=3pt] {$2(m+n)$} node[above=3pt] {$  $};
@@ -238,9 +237,9 @@ $$
 \end{center}
 
 Vsako zaporedje $\{X_l\}_{l \in \mathbb{N}}$ v $\widetilde{T}$ je zaporedje Bernoullijevih spremenljivk, saj pri upanju računamo verjetnost, da se v $m+n$ ponovitvah dogodek zgodi natanko $m+n$-krat. Torej $X_l$\textasciitilde $Ber(p^{m+n})$, medtem ko je zaporedje 
-$\{X_l\}_{l \in \mathbb{N}}$ porazdeljeno geometrijsko, torej $\{X_l\}_{l \in \mathbb{N}}$\textasciitilde $Geom(p^{m+n})$, saj čakamo, da se dogodek, ko zaporedje vsebuje same enice, zgodil natanko enkrat. Sledi:
+$\{X_l\}_{l \in \mathbb{N}}$ porazdeljeno geometrijsko, torej $G_l$\textasciitilde $Geom(p^{m+n})$, saj čakamo, da se dogodek, ko zaporedje vsebuje same enice, zgodi natanko enkrat. Sledi:
 
-$$E[Geom(p^{m+n})]=\frac{1}{p^{(m+n)}} \Longrightarrow E[\widetilde{T}] = \frac{m+n}{p^{(m+n)}} < \infty$$
+$$E[G_l]=\frac{1}{p^{(m+n)}} \Longrightarrow E[\widetilde{T}] = \frac{m+n}{p^{(m+n)}} < \infty$$
 
 \newpage
 \subsubsection{Računanje $E[T]$ za vsak $m$ in $n$}
