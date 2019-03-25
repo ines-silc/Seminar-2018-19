@@ -103,13 +103,12 @@ Rešitev: $$E[T|M=x]= (m+n)x-x^2$$
 \item V primeru, da velja $m = n$ : $$p_m = \frac{(1-p)^m}{p^m+(1-p)^m}.$$
 V primeru, da je $p = \frac{1}{2}$, dobimo: 
 $p_m = \frac{m}{m + m} = \frac{1}{m}.$
-\item V primeru, da premoženje enega igralca pomnožimo s konstanto, dobimo:
+\item V primeru, da premoženje obeh igralcev pomnožimo s konstanto, dobimo:
 
-$$p_m = \frac{(1-p)^{c m+n}-p^n (1-p)^{c m}}{(1-p)^{c m+n}-p^{c m+n}} \textrm{ in }
-p_n = \frac{p^{c n+m}-p^m (1-p)^{c n}}{p^{c n+m}-(1-p)^{c n+m}}.$$
+$$p_m = \frac{(1-p)^{\text{cm}+\text{cn}}-(1-p)^{\text{cm}} p^{\text{cn}}}{(1-p)^{\text{cm}+\text{cn}}-p^{\text{cm}+\text{cn}}}.$$
+V primeru $p = \frac{1}{2}$ torej dobimo: 
+$p_m = \frac{cn}{cm + cn} = \frac{cn}{c(m + n)} = \frac{n}{m + n},$ torej ugotovimo, da se iskana verjetnost ne spremeni. 
 
-V primeru, da je $p = \frac{1}{2}$, dobimo: 
-$p_m = \frac{n}{cm + n},$ $p_n = \frac{m}{cn + m}.$
 \item Če gledamo limito, ko gresta $m$ in $n$ proti $\infty$ ugotovimo, da limita ne obstaja.
 \item $$p_m = \lim_{p \to 1/2}  \frac{(1-p)^{n+m} - (1-p)^m \cdot p^n}{(1-p)^{m+n} - p^{m+n}}  =\frac{n}{m + n}.$$
 \end{enumerate}
