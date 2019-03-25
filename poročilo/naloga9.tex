@@ -109,7 +109,7 @@ Torej $$u_a = \frac{1-p}{p} \cdot u_{a-1}.$$
 Če sedaj uvedemo še oznako $r:=\frac{1-p}{p}$, dobimo
 $$u_a = r \cdot u_{a-1}.$$
 
-\newpage
+
 Od tod lahko izrazimo vse člene z začetnim (torej z $u_0$):
 $$u_1 = r \cdot u_0$$
 $$u_2 = r \cdot u_1 = r \cdot r \cdot u_0 = r^2 \cdot u_0$$ 
@@ -132,7 +132,7 @@ Sedaj lahko najprej $u_0$ izrazimo z začetnimi podatki \footnote{Razen, ko je $
 
 Iz tega sledi $$u_0 = \frac{r-1}{r^c -1}.$$
 
-\newpage
+
 Sedaj lahko izračunamo verjetnost za propad prvega igralca (vemo, da je $u_m = p_m - p_{m+1}$):
 \begin{equation*}
 \begin{split}
@@ -152,7 +152,7 @@ p_m &= u_m + p_{m+1} = u_m + u_{m+1} + p_{m+2} = \\
 \end{equation*}
 Torej dobili smo verjetnost za propad igralca $M$.
 
-Vemo, da mora biti vsota verjetnosti, da bankrotira igralec $M$, in da bankrotira igralec $N$, enaka $1$:
+Da se bo igra skoraj gotovo končala, mora biti vsota verjetnosti, da bankrotira igralec $M$, in da bankrotira igralec $N$, enaka $1$:
 \begin{equation*}
 \begin{split}
 &~\frac{(1-p)^{m+n}-p^m (1-p)^n}{(1-p)^{m+n}-p^{m+n}}+\frac{p^{m+n}-p^m
@@ -165,7 +165,7 @@ Vemo, da mora biti vsota verjetnosti, da bankrotira igralec $M$, in da bankrotir
 = &~1.
 \end{split} 
 \end{equation*}
-\newpage
+
 
 \subsubsection{Poseben primer}
 \label{Posebni primer za  r = 1}
@@ -277,12 +277,16 @@ Zanima nas pričakovano število iger, če začnemo z $m$ enotami denarja. Odgov
 \begin{enumerate}
 \item Najprej nas zanima primer, ko je $m = n$, torej, ko imata oba igralca na začetku enako premoženja. V tem primeru bo naša iskana verjetnost enaka: 
 $$p_m = \frac{(1-p)^m}{p^m+(1-p)^m}.$$
+V primeru, da je $p = \frac{1}{2}$, dobimo: 
+$$p_m = \frac{m}{m + m} = \frac{1}{m}.$$
 
 \item Kaj pa, če eno izmed premoženj igralcev pomnožimo s konstanto? V tem primeru za igralca $M$ dobimo verjetnost
 $$p_m = \frac{(1-p)^{c m+n}-p^n (1-p)^{c m}}{(1-p)^{c m+n}-p^{c m+n}},$$ za igralca $N$ pa verjetnost
 $$p_n = \frac{p^{c n+m}-p^m (1-p)^{c n}}{p^{c n+m}-(1-p)^{c n+m}}.$$
-
-\item Zanima pa nas tudi, kaj se zgodi, če $m$ in $n$ pošljemo v neskončno, torej da imata igralca neomejeno premoženja. Če pošljemo oba premoženja naenkrat proti neskončnosti, limita ne bo obstajala, saj se v tem primeru igra nikoli nebi končala, posledično pa ne moremo izračunati verjetnosti, da igralec $M$ propade.
+V primeru, da je $p = \frac{1}{2}$, dobimo: 
+$p_m = \frac{n}{cm + n},$ $p_n = \frac{m}{cn + m}.$
+\item Zanima pa nas tudi, kaj se zgodi, če $m$ in $n$ pošljemo v neskončno, torej da imata igralca neomejeno premoženja.
+Če pošljemo premoženje igralca $M$ proti neskončno, potem bo naša iskana verjetnost, da igralec $M$ bankrotira, šla proti 0. V nasprotnem primeru, ko pošljemo premoženje igralca $N$ proti neskončno, bo šla verjetnost, da bankrotira igralec $M$ proti 1.
 
 \item Kot zadnji nas zanima še posebni primer, ko gre $p$ iz leve in iz desne proti $\frac{1}{2}$. V obeh primerih dobimo enak rezultat, in sicer: 
 $$p_m = \lim_{p \to 1/2}  \frac{(1-p)^{n+m} - (1-p)^m \cdot p^n}{(1-p)^{m+n} - p^{m+n}}  =\frac{n}{m + n}.$$
