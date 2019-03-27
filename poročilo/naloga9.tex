@@ -78,7 +78,7 @@ Igralec $M$ ima $m$ enot denarja, igralec $N$ pa $n$ enot premoženja, $\{m,n\}\
 \section[Rešitev]{Rešitev}
 \subsection{Računanje verjetnosti, da bankrotira igralec M}
 
-Če je verjetnost, da zmaga igralec $M$ enaka $p$, potem je verjetnost, da zmaga igralec $N$ enaka $1-p$. Naj bo $A_a$ dogodek, da bankrotira igralec M, če začne z $a$ denarja, nasprotnik pa z $m + n - a$ denarja, kjer je $ a \in \{ 0, \dotso , m + n\}$. Za vsako število $a$, kjer je $ a \in \{ 0, \dotso , m + n\}$,  definiramo $p_a = P(A_a)$.
+Če je verjetnost, da zmaga igralec $M$, enaka $p$, potem je verjetnost, da zmaga igralec $N$, enaka $1-p$. Naj bo $A_a$ dogodek, da bankrotira igralec M, če začne z $a$ denarja, nasprotnik pa z $m + n - a$ denarja, kjer je $ a \in \{ 0, \dotso , m + n\}$. Za vsako število $a$, kjer je $ a \in \{ 0, \dotso , m + n\}$,  definiramo $p_a = P(A_a)$.
 Poiskati želimo $p_m$, torej verjetnost, da propade igralec $M$, če ima $m$ denarja. 
 \\
 
@@ -86,10 +86,10 @@ Naši hipotezi sta:
 \\
 $H$ - igralec M v prvem krogu zmaga (torej dobi 1 od igralca N)
 \\
-$H^C$ - igralec M v naslednjem krogu izgubi (torej da 1 igralcu N)
+$H^C$ - igralec M v naslednjem krogu izgubi (torej da 1 igralcu N).
 \\
 
-Verjetnost, da igralec $M$ propade, če ima $a$ denarja je enaka
+Verjetnost, da igralec $M$ propade, če ima $a$ denarja je enaka:
 \\
 $$P(A_a) = P(A_a \vert  H) \cdot P(H) + P(A_a \vert  H^C) \cdot P(H^C),$$
  iz česar sledi, za $ a \in \{ 0, \dotso , m + n\}$,
@@ -104,11 +104,11 @@ p \cdot (p_a - p_{a+1}) = (1-p) \cdot (p_{a-1} - p_a). &~
 \end{equation*}
 
 
-Sedaj uvedemo novo oznako: $u_a = p_a - p_{a+1}$, za  $ a \in \{ 0, \dotso , m + n\}$. Torej velja tudi $u_{a-1} = p_{a-1} - p_a$, zato sledi, da je
+Sedaj uvedemo novo oznako: $u_a = p_a - p_{a+1}$, za  $ a \in \{ 0, \dotso , m + n\}$. Torej velja tudi $u_{a-1} = p_{a-1} - p_a$, zato sledi, da je:
 $$p \cdot u_a = (1 - p) \cdot u_{a-1}.$$
-Torej $$u_a = \frac{1-p}{p} \cdot u_{a-1}.$$
+Torej: $$u_a = \frac{1-p}{p} \cdot u_{a-1}.$$
 
-Če sedaj uvedemo še oznako $r:=\frac{1-p}{p}$, dobimo
+Če sedaj uvedemo še oznako $r:=\frac{1-p}{p}$, dobimo:
 $$u_a = r \cdot u_{a-1}.$$
 
 
@@ -121,7 +121,7 @@ $$u_a = r^a \cdot u_0$$ za $ a \in \{ 0, \dotso , m + n\}.$
 Vemo, da če ima eden od igralcev ves denar, potem gotovo zmaga, če pa ga nima nič, potem gotovo izgubi, zato je:
 $$p_c = 0 \textrm{, kjer je } c := m + n \textrm{ in } p_0 = 1.$$
 
-Sedaj lahko najprej $u_0$ izrazimo z začetnimi podatki \footnote{Razen, ko je $r = 1$, glej posebni primer \ref{Posebni primer za r = 1}} :
+Sedaj lahko najprej $u_0$ izrazimo z začetnimi podatki \footnote{Razen, ko je $r = 1$, glej poseben primer \ref{Poseben primer za r = 1}} :
 \begin{equation*}
 \begin{split}
 1 = p_0 - p_c &= (p_0 - p_1) + (p_1 - p_2) + \cdots + (p_{c-1} - p_c) = \\
@@ -132,7 +132,7 @@ Sedaj lahko najprej $u_0$ izrazimo z začetnimi podatki \footnote{Razen, ko je $
 \end{split}
 \end{equation*}  
 
-Iz tega sledi $$u_0 = \frac{r-1}{r^c -1}.$$
+Iz tega sledi: $$u_0 = \frac{r-1}{r^c -1}.$$
 
 
 Sedaj lahko izračunamo verjetnost za propad prvega igralca (vemo, da je $u_m = p_m - p_{m+1}$):
@@ -152,7 +152,7 @@ p_m &= u_m + p_{m+1} = u_m + u_{m+1} + p_{m+2} = \\
     \frac{(1-p)^{n+m} - (1-p)^m \cdot p^n}{(1-p)^{m+n} - p^{m+n}}.
 \end{split} 
 \end{equation*}
-Torej dobili smo verjetnost za propad igralca $M$.
+Torej, dobili smo verjetnost za propad igralca $M$.
 
 Da se bo igra skoraj gotovo končala, mora biti vsota verjetnosti, da bankrotira igralec $M$, in da bankrotira igralec $N$, enaka $1$:
 \begin{equation*}
@@ -170,7 +170,7 @@ Da se bo igra skoraj gotovo končala, mora biti vsota verjetnosti, da bankrotira
 
 
 \subsubsection{Poseben primer}
-\label{Posebni primer za  r = 1}
+\label{Poseben primer za  r = 1}
 Vprašanje se pojavi, kaj se zgodi, če imata oba igralca enako verjetnost za zmago, torej $p = 1 - p = \frac{1}{2}$. Takrat namreč zgornji izračun ni mogoč, saj bi prišlo do deljenja z $0$. Iz tega dobimo, da je 
 $$r = \frac{1 - \frac{1}{2}}{\frac{1}{2}} = 1.$$
 
@@ -188,13 +188,13 @@ p_m &= u_0 \cdot (c - m) = \frac{c-m}{c} = \\
 \end{split} 
 \end{equation*}
 
-Ponovno mora veljati, da je vsota verjetnosti, da bankrotira igralec $M$ in, da bankrotira igralec $N$ enaka $1$, je pa izračun v tem primeru veliko krajši. Torej: 
+Ponovno mora veljati, da je vsota verjetnosti, da bankrotira igralec $M$, in da bankrotira igralec $N$, enaka $1$, je pa izračun v tem primeru veliko krajši. Torej: 
 $$\frac{n}{m + n} + \frac{m}{m + n} = \frac{n + m}{m+ n} = 1.$$
 
 
 \subsection{Računanje $E[T]$}
 \subsubsection{Predpostavka, da je $E[T] < \infty$}
-Razmislimo najprej zakaj je $E[T] <\infty$. Če lahko čas $T$, ko se igra konča navzgor omejimo s časom $\widetilde{T}$, katerega upanje lahko lažje izračunamo in dokažemo, da je končno, bo sledilo, da je tudi $E[T]$ končna. Vsakič, ko vidimo $m+n-1$ zaporednih dobitkov igralca M se je igra gotovo končala, saj je v najslabšem primeru začel z 1 enoto denarja in je blo potrebnih $m+n-1$ iger, da se je tekma zaključila.\\
+Razmislimo najprej, zakaj je $E[T] <\infty$. Če lahko čas $T$, ko se igra konča, navzgor omejimo s časom $\widetilde{T}$, katerega upanje lahko lažje izračunamo, in dokažemo, da je končno, bo sledilo, da je tudi $E[T]$ končna. Vsakič, ko vidimo $m+n-1$ zaporednih dobitkov igralca M, se je igra gotovo končala, saj je v najslabšem primeru začel z 1 enoto denarja in je blo potrebnih $m+n-1$ iger, da se je tekma zaključila.\\
 
 Definirajmo: 
 \[
@@ -243,13 +243,13 @@ $$E[G_l]=\frac{1}{p^{(m+n)}} \Longrightarrow E[\widetilde{T}] = \frac{m+n}{p^{(m
 
 \newpage
 \subsubsection{Računanje $E[T]$ za vsak $m$ in $n$}
-Za dejanski izračun matematičnega upanje števila iger rešujemo enačbo oblike $$E[T|M=x] = p\cdot E[T|M=x+1] + (1-p)\cdot E[T|M=x-1] + 1,$$ kjer je prvotno premoženje igralca M enako x, kar zaradi lažjega zapisa prevedemo na obliko $f(x) = p\cdot f(x+1) + (1-p) \cdot f(x-1) + 1 ~ \textrm{oziroma} $ 
+Za dejanski izračun matematičnega upanja števila iger rešujemo enačbo oblike: $$E[T|M=x] = p\cdot E[T|M=x+1] + (1-p)\cdot E[T|M=x-1] + 1,$$ kjer je prvotno premoženje igralca M enako x, kar zaradi lažjega zapisa prevedemo na obliko $f(x) = p\cdot f(x+1) + (1-p) \cdot f(x-1) + 1 ~ \textrm{oziroma} $ 
 \begin{equation}
 \label{prvotna rekurzivna}
 p\cdot f(x+2) - f(x+1) + (1-p)\cdot f(x) = -1,
 \end{equation}
 kjer je $f(x):=E[T|M=x]$ in $x \in \mathbb{N}$. Tu smo predpostavili, da je $E[T] < \infty$, da lahko enolično zadostimo rekurzivni enačbi. 
-Rešujemo torej nehomogeno rekurzivno enačbo \footnote{Razen, ko je $p=\frac{1}{2}$, glej posebni primer \ref{Posebni primer za 1/2} } , katero rešitev je vsota homogene in ene partikularne rešitve. \\
+Rešujemo torej nehomogeno rekurzivno enačbo \footnote{Razen, ko je $p=\frac{1}{2}$, glej poseben primer \ref{Poseben primer za 1/2} } , katere rešitev je vsota homogene in ene partikularne rešitve. \\
 
 Rešimo najprej homogeni del. Rešujemo enačbo: 
 \begin{equation}
@@ -271,25 +271,25 @@ Partikularno rešitev iščemo z nastavkom $f(x)= Cx1^x$ oziroma $f(x)= Cx$. Vst
  
 Partikularna rešitev je: $$f(x)=\frac{x}{1-2p}.$$
 
-Splošna rešitev\footnote{Razen, ko je $p=\frac{1}{2}$, glej posebni primer \ref{Posebni primer za 1/2} } enačbe (\ref{prvotna rekurzivna}) je: $$A + B\bigg( \frac{1-p}{p} \bigg )^x+\frac{x}{1-2p}.$$
+Splošna rešitev\footnote{Razen, ko je $p=\frac{1}{2}$, glej poseben primer \ref{Poseben primer za 1/2} } enačbe (\ref{prvotna rekurzivna}) je: $$A + B\bigg( \frac{1-p}{p} \bigg )^x+\frac{x}{1-2p}.$$
 
 Upoštevamo lahko še robna pogoja:
 \begin{enumerate}
-\item Pričakovano število iger, če smo brez denarja je 0, saj se takrat igra konča. Pogoj zapišemo v obliki $E[T|M= 0] = f(0) = 0$. Vstavimo v splošno rešitev in dobimo:
+\item Pričakovano število iger, če smo brez denarja, je 0, saj se takrat igra konča. Pogoj zapišemo v obliki $E[T|M= 0] = f(0) = 0$. Vstavimo v splošno rešitev in dobimo:
 $$A + B\bigg( \frac{1-p}{p} \bigg )^0 = 0, \quad A = -B.$$
-\item Pričakovano število iger, če imamo $m+n$ denarja je 0, saj se takrat igra konča. Pogoj zapišemo v obliki $E[T|M= m+n] = f(m+n) = 0$. Vstavimo v splošno rešitev in dobimo:
+\item Pričakovano število iger, če imamo $m+n$ denarja, je 0, saj se takrat igra konča. Pogoj zapišemo v obliki $E[T|M= m+n] = f(m+n) = 0$. Vstavimo v splošno rešitev in dobimo:
 $$-B + B\bigg( \frac{1-p}{p} \bigg )^{m+n}+\frac{m+n}{1-2p}=0$$
 
 $$B = \frac{\frac{m+n}{1-2p}}{1- \left(\frac{1-p}{p}\right)^{m+n}} \Rightarrow A = \frac{\frac{m+n}{1-2p}}{\left(\frac{1-p}{p}\right)^{m+n}-1}.$$
 \end{enumerate}
 
-Pričakovano število iger, če imamo $x$ enot denarja je: $$E[ T | M = x]= \frac{\frac{m+n}{1-2p}}{\left(\frac{1-p}{p}\right)^{m+n}-1} + \frac{\frac{m+n}{1-2p}}{1- \left(\frac{1-p}{p}\right)^{m+n}}\bigg( \frac{1-p}{p} \bigg )^x+\frac{x}{1-2p}.$$
- Zanima nas $E[T|M=m]$, vstavimo $x=m$ v zgornjo enačbo in dobimo, da je pričakovano število iger, če začnemo z $m$ enotami denarja enako: $$E[T|M=m]=\frac{(m+n) \left(1-\left(\frac{1-p}{p}\right)^m\right)}{(1-2 p)
+Pričakovano število iger, če imamo $x$ enot denarja, je: $$E[ T | M = x]= \frac{\frac{m+n}{1-2p}}{\left(\frac{1-p}{p}\right)^{m+n}-1} + \frac{\frac{m+n}{1-2p}}{1- \left(\frac{1-p}{p}\right)^{m+n}}\bigg( \frac{1-p}{p} \bigg )^x+\frac{x}{1-2p}.$$
+ Zanima nas $E[T|M=m]$, vstavimo $x=m$ v zgornjo enačbo in dobimo, da je pričakovano število iger, če začnemo z $m$ enotami denarja, enako: $$E[T|M=m]=\frac{(m+n) \left(1-\left(\frac{1-p}{p}\right)^m\right)}{(1-2 p)
    \left(\left(\frac{1-p}{p}\right)^{m+n}-1\right)}+\frac{m}{1-2 p}.$$
 
 \subsubsection{Poseben primer}
-\label{Posebni primer za 1/2}
-Formula ne drži če je $p = \frac{1}{2}$, saj pride do deljenja z 0, zato moramo to izračunati posebej. Prav tako rešujemo nehomogeno rekurzivno enačbo, ki jo zapišemo kot: 
+\label{Poseben primer za 1/2}
+Formula ne drži, če je $p = \frac{1}{2}$, saj pride do deljenja z 0, zato moramo to izračunati posebej. Prav tako rešujemo nehomogeno rekurzivno enačbo, ki jo zapišemo kot: 
 \begin{equation}
 \label{druga rekurzivna}
 \frac{1}{2}f(x+2)-f(x+1)+\frac{1}{2}f(x)=-1.
@@ -317,7 +317,7 @@ Vstavimo robne pogoje:
 \item $f(0)=0\Rightarrow B = 0$
 \item $f(m+n)=0 \Rightarrow A = m+n$
 \end{enumerate}
-Pričakovano število iger, če imamo $x$ enot denarja in je verjetnost za zmago $p=\frac{1}{2}$ je: $$E[T|M=x]= (m+n)x-x^2.$$
+Pričakovano število iger, če imamo $x$ enot denarja in je verjetnost za zmago $p=\frac{1}{2}$, je: $$E[T|M=x]= (m+n)x-x^2.$$
 Zanima nas pričakovano število iger, če začnemo z $m$ enotami denarja. Odgovor je:$$E[T|M=m]=(m+n)m-m^2= n\cdot m.$$
 
 \newpage
@@ -336,15 +336,15 @@ $$p_n = \frac{p^{c n+m}-p^m (1-p)^{c n}}{p^{c n+m}-(1-p)^{c n+m}}.$$
 V primeru, da je $p = \frac{1}{2}$, dobimo: 
 $p_m = \frac{n}{cm + n},$ $p_n = \frac{m}{cn + m}.$
 
-Če pa oba premoženja pomnožimo s konstanot, dobimo:
+Če pa obe premoženji pomnožimo s konstanto, dobimo:
 $$p_m = \frac{(1-p)^{\text{cm}+\text{cn}}-(1-p)^{\text{cm}} p^{\text{cn}}}{(1-p)^{\text{cm}+\text{cn}}-p^{\text{cm}+\text{cn}}}.$$
 V primeru $p = \frac{1}{2}$ torej dobimo: 
 $p_m = \frac{cn}{cm + cn} = \frac{cn}{c(m + n)} = \frac{n}{m + n},$ torej ugotovimo, da se iskana verjetnost ne spremeni. 
 
 \item Zanima pa nas tudi, kaj se zgodi, če $m$ in $n$ pošljemo v neskončno, torej da imata igralca neomejeno premoženja.
-Če pošljemo premoženje igralca $M$ proti neskončno, potem bo naša iskana verjetnost, da igralec $M$ bankrotira, šla proti 0. V nasprotnem primeru, ko pošljemo premoženje igralca $N$ proti neskončno, bo šla verjetnost, da bankrotira igralec $M$ proti 1.
+Če pošljemo premoženje igralca $M$ proti neskončno, potem bo naša iskana verjetnost, da igralec $M$ bankrotira, šla proti 0. V nasprotnem primeru, ko pošljemo premoženje igralca $N$ proti neskončno, bo šla verjetnost, da bankrotira igralec $M$, proti 1.
 
-\item Kot zadnji nas zanima še posebni primer, ko gre $p$ iz leve in iz desne proti $\frac{1}{2}$. V obeh primerih dobimo enak rezultat, in sicer: 
+\item Kot zadnji nas zanima še poseben primer, ko gre $p$ iz leve in iz desne proti $\frac{1}{2}$. V obeh primerih dobimo enak rezultat, in sicer: 
 $$p_m = \lim_{p \to 1/2}  \frac{(1-p)^{n+m} - (1-p)^m \cdot p^n}{(1-p)^{m+n} - p^{m+n}}  =\frac{n}{m + n}.$$
 
 \end{enumerate}

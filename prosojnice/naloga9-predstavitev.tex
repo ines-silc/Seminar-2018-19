@@ -6,6 +6,8 @@
 \usepackage{mathptmx}
 \usepackage{helvet}
 \usepackage{courier}
+\usepackage{hyperref}
+\usepackage{tikz}
 
 \usetheme{CambridgeUS}
 
@@ -19,9 +21,21 @@
 \begin{frame}
 	\titlepage
 \end {frame}
+\section[Navodilo]{Navodilo}
+\begin{frame}
+\frametitle{Navodilo}
+Igralec $M$ ima $m$ enot denarja, igralec $N$ pa $n$ enot premoženja, $\{m,n\}\subset \mathbb{N}$. Zapored igrata igro na srečo v kateri ni neodločenih izidov; v vsaki igri dobi zmagovalec eno denarno enoto od poraženca; igralec $M$ zmaga vsakič z verjetnostjo $p\in (0,1)$, neodvisno od preteklosti. Igranje se konča, ko eden od igralcev bankrotira. Naj bo $T$ število iger, ki so potrebne, da eden od igralcev bankrotira. 
+\begin{enumerate}[(i)]
+\item Določi verjetnost, da bankrotira igralec $M$. Zakaj je  $T<\infty$ s.g.?
+\item Predpostavi, da je $E[T]<\infty$ (za vsako izbiro $m$ in $n$). Določi $E[T]$. *Ali znaš utemeljiti, da je $E[T]<\infty$?
+\end{enumerate}
+
+\end{frame}
+
+
 \section[Posebni primeri]{Posebni primeri}
 \begin{frame}
-\section[Vsota verjetnosti]{Vsota verjetnosti}
+\frametitle{Končnost igre}
 Vsota verjetnostii, da bankrotira igralec $M$, in da bankrotira igralec $N$:\\
 \begin{equation*}
 \begin{split}
@@ -46,7 +60,7 @@ V tem primeru so $u_0, u_1, \dotso, u_n$ med seboj enaki, torej:
 $$u_k = r^k \cdot u_0 = u_0.$$
 Posledično še lažje izrazimo $u_0$, na način:
 $1 = c\cdot u_0$, torej $u_0 = \frac{1}{c}.$
-V tem primeru je naša iskana verjetnost za igralca $M$ enaka
+V tem primeru je naša iskana verjetnost za igralca $M$ enaka:
 \begin{equation*}
 \begin{split}
 p_m &= u_0 \cdot (c - m) = \frac{c-m}{c} = \\
@@ -114,28 +128,55 @@ $p_m = \frac{cn}{cm + cn} = \frac{cn}{c(m + n)} = \frac{n}{m + n},$ torej ugotov
 \end{enumerate}
 \end{frame}
 
+\section{Dokaz $E[T]<\infty$}
+\begin{frame}
+\frametitle{Dokaz $E[T]$<$\infty$}
+Definirajmo:
+\[
+X_n := \left\{
+\begin{array}{rl}
+1; & \textrm{če zmaga igralec M}\\
+0; & \textrm{če zmaga igralec N}
+\end{array}
+\right.
+\]
 
+Tako lahko navzgor ocenimo $T$:
+$$T \leq inf\{ l \in \mathbb{N}: \textrm{v zaporedju } X_1, \dots, X_l \textrm{ smo videli } m+n \textrm{ zaporednih enic} \leq$$ 
+$$
+\begin{array} {lll} 
+\leq (m+n)\cdot inf\{ l \in \mathbb{N}:& X_1, \dots, X_{m+n}; & \textrm{vsebuje same enice, ali} \\ 
+&X_{m+n+1}, \dots, X_{2(m+n)};& \textrm{vsebuje same enice, ali}\\
+&\dots \\
+&X_{(l-1)(m+n)+1}, \dots, X_{l(m+n)}; & \textrm{vsebuje same enice}\}=
+\end{array}$$
+$\quad \quad= (m+n)\cdot G_l =: \widetilde{T}$\\
 
+\end{frame}
 
+\begin{frame}
+Časovno os razdelimo na intervale dolžine $m+n$, znotraj katerih čakamo, da zaporedje $\{X_l\}_{l \in \mathbb{N}}$ vsebuje same enice:
+\begin{center}
+\begin{tikzpicture}
 
+    \draw (0,0) -- (7,0);
+	\draw[dotted] (7,0) -- (8,0);
+	\draw (8, 0) -- (9, 0);
+ 
+    \foreach \x in {0,2,4,6,9}
+      \draw (\x cm,3pt) -- (\x cm,-3pt);
 
+    \draw (0,0) node[below=3pt] {$ 0 $} node[above=3pt] {$   $};
+    \draw (2,0) node[below=3pt] {$m+n$} node[above=3pt] {$  $};
+    \draw (4,0) node[below=3pt] {$2(m+n)$} node[above=3pt] {$  $};
+    \draw (6,0) node[below=3pt] {$3(m+n)$} node[above=3pt] {$ $};
+	\draw (9,0) node[below=3pt] {$l(m+n)$} node[above=3pt] {$ $};
+\end{tikzpicture}
+\end{center}
+Vsako zaporedje $\{X_l\}_{l \in \mathbb{N}}$ v $\widetilde{T}$ je zaporedje Bernoullijevih spremenljivk, saj pri upanju računamo verjetnost, da se v $m+n$ ponovitvah dogodek zgodi natanko $m+n$-krat. Torej $X_l$\textasciitilde $Ber(p^{m+n})$, medtem ko je zaporedje 
+$\{X_l\}_{l \in \mathbb{N}}$ porazdeljeno geometrijsko, torej $G_l$\textasciitilde $Geom(p^{m+n})$, saj čakamo, da se dogodek, ko zaporedje vsebuje same enice, zgodi natanko enkrat. Sledi:
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+$$E[G_l]=\frac{1}{p^{(m+n)}} \Longrightarrow E[\widetilde{T}] = \frac{m+n}{p^{(m+n)}} < \infty$$
+\end{frame}
 
 \end{document}
