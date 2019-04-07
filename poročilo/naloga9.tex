@@ -65,9 +65,9 @@ Mentor: doc. dr. Matija Vidmar
 
 
 
-Igralec $M$ ima $m$ enot denarja, igralec $N$ pa $n$ enot premoženja, $\{m,n\}\subset \mathbb{N}$. Zapored igrata igro na srečo v kateri ni neodločenih izidov; v vsaki igri dobi zmagovalec eno denarno enoto od poraženca; igralec $M$ zmaga vsakič z verjetnostjo $p\in (0,1)$, neodvisno od preteklosti. Igranje se konča, ko eden od igralcev bankrotira. Naj bo $T$ število iger, ki so potrebne, da eden od igralcev bankrotira. 
+Igralec M ima $m$ enot denarja, igralec N pa $n$ enot premoženja, $\{m,n\}\subset \mathbb{N}$. Zapored igrata igro na srečo v kateri ni neodločenih izidov; v vsaki igri dobi zmagovalec eno denarno enoto od poraženca; igralec M zmaga vsakič z verjetnostjo $p\in (0,1)$, neodvisno od preteklosti. Igranje se konča, ko eden od igralcev bankrotira. Naj bo $T$ število iger, ki so potrebne, da eden od igralcev bankrotira. 
 \begin{enumerate}[(i)]
-\item Določi verjetnost, da bankrotira igralec $M$. Zakaj je  $T<\infty$ s.g.?
+\item Določi verjetnost, da bankrotira igralec M. Zakaj je  $T<\infty$ s.g.?
 \item Predpostavi, da je $E[T]<\infty$ (za vsako izbiro $m$ in $n$). Določi $E[T]$. *Ali znaš utemeljiti, da je $E[T]<\infty$?
 \end{enumerate}
 
@@ -78,8 +78,8 @@ Igralec $M$ ima $m$ enot denarja, igralec $N$ pa $n$ enot premoženja, $\{m,n\}\
 \section[Rešitev]{Rešitev}
 \subsection{Računanje verjetnosti, da bankrotira igralec M}
 
-Če je verjetnost, da zmaga igralec $M$, enaka $p$, potem je verjetnost, da zmaga igralec $N$, enaka $1-p$. Naj bo $A_a$ dogodek, da bankrotira igralec M, če začne z $a$ denarja, nasprotnik pa z $m + n - a$ denarja, kjer je $ a \in \{ 0, \dotso , m + n\}$. Za vsako število $a$, kjer je $ a \in \{ 0, \dotso , m + n\}$,  definiramo $p_a = P(A_a)$.
-Poiskati želimo $p_m$, torej verjetnost, da propade igralec $M$, če ima $m$ denarja. 
+Če je verjetnost, da zmaga igralec M, enaka $p$, potem je verjetnost, da zmaga igralec N, enaka $1-p$. Naj bo $A_a$ dogodek, da bankrotira igralec M, če začne z $a$ denarja, nasprotnik pa z $m + n - a$ denarja, kjer je $ a \in \{ 0, \dotso , m + n\}$. Za vsako število $a$, kjer je $ a \in \{ 0, \dotso , m + n\}$,  definiramo $p_a = P(A_a)$.
+Poiskati želimo $p_m$, torej verjetnost, da propade igralec M, če ima $m$ denarja. 
 \\
 
 Naši hipotezi sta:
@@ -89,10 +89,10 @@ $H$ - igralec M v prvem krogu zmaga (torej dobi 1 od igralca N)
 $H^C$ - igralec M v prvem krogu izgubi (torej da 1 igralcu N).
 \\
 
-Verjetnost, da igralec $M$ propade, če ima $a$ denarja je enaka:
+Verjetnost, da igralec M propade, če ima $a$ denarja je enaka:
 \\
 $$P(A_a) = P(A_a \vert  H) \cdot P(H) + P(A_a \vert  H^C) \cdot P(H^C),$$
- iz česar sledi, za $ a \in \{ 0, \dotso , m + n\}$,
+ iz česar sledi, za $ a \in \{1 , \dotso , m + n-1\}$,
 \begin{equation*}
 \begin{split}
 p_a = p_{a+1} \cdot p + p_{a-1} \cdot (1 - p) &~ \Rightarrow \\
@@ -104,31 +104,31 @@ p \cdot (p_a - p_{a+1}) = (1-p) \cdot (p_{a-1} - p_a). &~
 \end{equation*}
 
 
-Sedaj uvedemo novo oznako: $u_a = p_a - p_{a+1}$, za  $ a \in \{ 0, \dotso , m + n\}$. Torej velja tudi $u_{a-1} = p_{a-1} - p_a$, zato sledi, da je:
-$$p \cdot u_a = (1 - p) \cdot u_{a-1}.$$
-Torej: $$u_a = \frac{1-p}{p} \cdot u_{a-1}.$$
+Sedaj uvedemo novo oznako: $u_a = p_a - p_{a+1}$, za  $ a \in \{ 0, \dotso , m + n-1\}$. Torej velja tudi $u_{a-1} = p_{a-1} - p_a$, za $ a \in \{1 , \dotso , m + n-1\}$, zato sledi, da je:
+$$p \cdot u_a = (1 - p) \cdot u_{a-1},$$  za $ a \in \{1 , \dotso , m + n-1\}.$
+Torej: $$u_a = \frac{1-p}{p} \cdot u_{a-1},$$  za $ a \in \{1 , \dotso , m + n-1\}.$
 
 Če sedaj uvedemo še oznako $r:=\frac{1-p}{p}$, dobimo:
-$$u_a = r \cdot u_{a-1}.$$
 
-
+\centerline{$u_a = r \cdot u_{a-1},$  za $ a \in \{1 , \dotso , m + n-1\}.$}
+\bigskip
 Od tod lahko izrazimo vse člene z začetnim (torej z $u_0$):
 $$u_1 = r \cdot u_0$$
 $$u_2 = r \cdot u_1 = r \cdot r \cdot u_0 = r^2 \cdot u_0$$ 
 $$\cdots $$
-$$u_a = r^a \cdot u_0$$ za $ a \in \{ 0, \dotso , m + n\}.$
+$$u_a = r^a \cdot u_0$$ za $ a \in \{ 0, \dotso , m + n-1\}.$
 
 Vemo, da če ima eden od igralcev ves denar, potem gotovo zmaga, če pa ga nima nič, potem gotovo izgubi, zato je:
-$$p_c = 0 \textrm{, kjer je } c := m + n \textrm{ in } p_0 = 1.$$
+$$p_c = 0 \textrm{, kjer je } c := m + n \textrm{, in } p_0 = 1.$$
 
-Sedaj lahko najprej $u_0$ izrazimo z začetnimi podatki \footnote{Razen, ko je $r = 1$, glej poseben primer \ref{Poseben primer za r = 1}} :
+Sedaj lahko najprej $u_0$ izrazimo z začetnimi podatki\footnote{Predpostavimo, da je $r \neq 1$, to je $p \neq \frac{1}{2}$ do \ref{Poseben primer za r = 1}.}:
 \begin{equation*}
 \begin{split}
-1 = p_0 - p_c &= (p_0 - p_1) + (p_1 - p_2) + \cdots + (p_{c-1} - p_c) = \\
-        &= u_0 + u_1 + u_2 + \cdots + u_{c-1} = \\
-        &= u_0 + r \cdot u_0 + r^2 \cdot u_0 + \cdots + r^{c-1} \cdot u_0 = \\
-        &= u_0 \cdot (1 + r + r^2 + \cdots + r^{c-1}) = \\
-        &= u_o \cdot \frac{r^c - 1}{r-1}  
+1 = p_0 - p_c &= (p_0 - p_1) + (p_1 - p_2) + \cdots + (p_{c-1} - p_c)  \\
+        &= u_0 + u_1 + u_2 + \cdots + u_{c-1}  \\
+        &= u_0 + r \cdot u_0 + r^2 \cdot u_0 + \cdots + r^{c-1} \cdot u_0  \\
+        &= u_0 \cdot (1 + r + r^2 + \cdots + r^{c-1})  \\
+        &= u_o \cdot \frac{r^c - 1}{r-1}.
 \end{split}
 \end{equation*}  
 
@@ -138,31 +138,31 @@ Iz tega sledi: $$u_0 = \frac{r-1}{r^c -1}.$$
 Sedaj lahko izračunamo verjetnost za propad prvega igralca (vemo, da je $u_m = p_m - p_{m+1}$):
 \begin{equation*}
 \begin{split}
-p_m &= u_m + p_{m+1} = u_m + u_{m+1} + p_{m+2} = \\
-    &= u_m + u_{m+1} + u_{m+2} + u_{m+3} + \cdots + u_{m+n-1} + p_{m+n} = \\
-    &= u_m + u_m \cdot r + u_m \cdot r^2 + \cdots + u_m \cdot r^{n-1} + 0 = \\
-    &= u_m + u_m \cdot \frac{1-p}{p} + u_m \cdot (\frac{1-p}{p})^2 + u_m \cdot (\frac{1-p}{p})^3 + \cdots + u_m \cdot (\frac{1-p}{p})^{n-1} = \\
-    &= u_m \cdot (1 + \frac{1-p}{p} + (\frac{1-p}{p})^2 + \cdots + (\frac{1-p}{p})^{n-1}) 
-    = u_m \cdot \frac{(\frac{1-p}{p})^n - 1}{\frac{1-p}{p} - 1} = \\
-    &= r^m \cdot u_0 \cdot \frac{(\frac{1-p}{p})^n - 1}{\frac{1-p}{p} - 1}  
-    = (\frac{1-p}{p})^m \cdot \frac{\frac{1-p}{p} - 1}{(\frac{1-p}{p})^{m+n} -1}\cdot \frac{(\frac{1-p}{p})^n - 1}{\frac{1-p}{p} - 1} = \\
-    &= \frac{(\frac{1-p}{p})^n - 1}{(\frac{1-p}{p})^{m+n} -1} \cdot (\frac{1-p}{p})^m 
-    = \frac{(\frac{1-p}{p})^{m+n} - (\frac{1-p}{p})^m}{(\frac{1-p}{p})^{m+n} -1} = \\
+p_m &= u_m + p_{m+1} = u_m + u_{m+1} + p_{m+2}  \\
+    &= u_m + u_{m+1} + u_{m+2} + u_{m+3} + \cdots + u_{m+n-1} + p_{m+n}  \\
+    &= u_m + u_m \cdot r + u_m \cdot r^2 + \cdots + u_m \cdot r^{n-1} + 0  \\
+    &= u_m + u_m \cdot \frac{1-p}{p} + u_m \cdot \Big( \frac{1-p}{p}\Big)^2 + u_m \cdot \Big(\frac{1-p}{p}\Big)^3 + \cdots + u_m \cdot \Big(\frac{1-p}{p}\Big)^{n-1}  \\
+    &= u_m \cdot \bigg(1 + \frac{1-p}{p} + \Big(\frac{1-p}{p}\Big)^2 + \cdots + \Big(\frac{1-p}{p}\Big)^{n-1}\bigg) 
+    = u_m \cdot \frac{\big(\frac{1-p}{p}\big)^n - 1}{\frac{1-p}{p} - 1}  \\
+    &= r^m \cdot u_0 \cdot \frac{\big(\frac{1-p}{p}\big)^n - 1}{\frac{1-p}{p} - 1}  
+    = \Big(\frac{1-p}{p}\Big)^m \cdot \frac{\frac{1-p}{p} - 1}{\big(\frac{1-p}{p}\big)^{m+n} -1}\cdot \frac{\big(\frac{1-p}{p}\big)^n - 1}{\frac{1-p}{p} - 1}  \\
+    &= \frac{\big(\frac{1-p}{p}\big)^n - 1}{\big(\frac{1-p}{p}\big)^{m+n} -1} \cdot \Big(\frac{1-p}{p}\Big)^m 
+    = \frac{\big(\frac{1-p}{p}\big)^{m+n} - \big(\frac{1-p}{p}\big)^m}{\big(\frac{1-p}{p}\big)^{m+n} -1} \\
     &= \frac{\frac{(1-p)^{n+m}}{p^n} - (1-p)^m}{\frac{(1-p)^{n+m}}{p^n} - p^m} = 
     \frac{(1-p)^{n+m} - (1-p)^m \cdot p^n}{(1-p)^{m+n} - p^{m+n}}.
 \end{split} 
 \end{equation*}
-Torej, dobili smo verjetnost za propad igralca $M$.
+Torej, dobili smo verjetnost za propad igralca M.
 
-Da se bo igra skoraj gotovo končala, mora biti vsota verjetnosti, da bankrotira igralec $M$, in da bankrotira igralec $N$, enaka $1$:
+Da se bo igra skoraj gotovo končala je ekvivalentno temu, da je vsota verjetnosti, da bankrotira igralec M, in verjetnosti,  da bankrotira igralec N, enaka $1$:
 \begin{equation*}
 \begin{split}
 &~\frac{(1-p)^{m+n}-p^m (1-p)^n}{(1-p)^{m+n}-p^{m+n}}+\frac{p^{m+n}-p^m
-   (1-p)^n}{p^{m+n}-(1-p)^{m+n}} =\\
+   (1-p)^n}{p^{m+n}-(1-p)^{m+n}} \\
 = &~\frac{(1-p)^{m+n}-p^m (1-p)^n}{(1-p)^{m+n}-p^{m+n}}-\frac{p^{m+n}-p^m
-   (1-p)^n}{(1-p)^{m+n}-p^{m+n}} =\\
+   (1-p)^n}{(1-p)^{m+n}-p^{m+n}} \\
 = &~\frac{(1-p)^{m+n}-p^m (1-p)^n-p^{m+n}+p^m
-   (1-p)^n}{(1-p)^{m+n}-p^{m+n}} =\\
+   (1-p)^n}{(1-p)^{m+n}-p^{m+n}} \\
 = &~\frac{(1-p)^{m+n}-p^{m+n}}{(1-p)^{m+n}-p^{m+n}} \\
 = &~1.
 \end{split} 
@@ -171,24 +171,23 @@ Da se bo igra skoraj gotovo končala, mora biti vsota verjetnosti, da bankrotira
 
 \subsubsection{Poseben primer}
 \label{Poseben primer za  r = 1}
-Vprašanje se pojavi, kaj se zgodi, če imata oba igralca enako verjetnost za zmago, torej $p = 1 - p = \frac{1}{2}$. Takrat namreč zgornji izračun ni mogoč, saj bi prišlo do deljenja z $0$. Iz tega dobimo, da je 
+Vprašanje se pojavi, kaj se zgodi, če imata oba igralca enako verjetnost za zmago, torej $p = 1 - p = \frac{1}{2}$. Takrat namreč zgornji izračun ni mogoč, saj bi prišlo do deljenja z $0$. Naj bo torej $p = \frac{1}{2}$. Vidimo, da je: 
 $$r = \frac{1 - \frac{1}{2}}{\frac{1}{2}} = 1.$$
 
-V tem primeru so $u_0, u_1, \dotso, u_n$ med seboj enaki, torej:
+V tem primeru so torej $u_0, u_1, \dotso, u_n$ med seboj enaki:
 $$u_k = r^k \cdot u_0 = u_0.$$
 
 Posledično še lažje izrazimo $u_0$, na način:
-$1 = c\cdot u_0$, torej $u_0 = \frac{1}{c}.$
-
-V tem primeru je naša iskana verjetnost za igralca $M$ enaka
+$1 = c\cdot u_0$, torej $u_0 = \frac{1}{c},$
+in naša iskana verjetnost za igralca M  je enaka
 \begin{equation*}
 \begin{split}
-p_m &= u_0 \cdot (c - m) = \frac{c-m}{c} = \\
+p_m &= u_0 \cdot (c - m) = \frac{c-m}{c}  \\
 		&= \frac{m + n - m}{m + n} = \frac{n}{m + n}.
 \end{split} 
 \end{equation*}
 
-Ponovno mora veljati, da je vsota verjetnosti, da bankrotira igralec $M$, in da bankrotira igralec $N$, enaka $1$, je pa izračun v tem primeru veliko krajši. Torej: 
+Ponovno se igra skoraj gotovo konča natanko tedaj, ko je vsota verjetnosti, da bankrotira igralec M, in da bankrotira igralec N, enaka $1$, je pa izračun v tem primeru veliko krajši. Torej: 
 $$\frac{n}{m + n} + \frac{m}{m + n} = \frac{n + m}{m+ n} = 1.$$
 
 
@@ -322,30 +321,30 @@ Zanima nas pričakovano število iger, če začnemo z $m$ enotami denarja. Odgov
 
 \newpage
 
-\section{Posebni primeri}
+\section{Analiza verjetnosti bankrota}
 
 \begin{enumerate}
-\item Najprej nas zanima primer, ko je $m = n$, torej, ko imata oba igralca na začetku enako premoženja. V tem primeru bo naša iskana verjetnost enaka: 
+\item Najprej nas zanima primer, ko je $m = n$, torej, ko imata oba igralca na začetku enako premoženja. V tem primeru bo naša iskana verjetnost za $p \neq \frac{1}{2}$ enaka: 
 $$p_m = \frac{(1-p)^m}{p^m+(1-p)^m}.$$
 V primeru, da je $p = \frac{1}{2}$, dobimo: 
-$$p_m = \frac{m}{m + m} = \frac{1}{m}.$$
+$$p_m = \frac{m}{m + m} = \frac{1}{2}.$$
 
-\item Kaj pa, če eno izmed premoženj igralcev pomnožimo s konstanto? V tem primeru za igralca $M$ dobimo verjetnost
-$$p_m = \frac{(1-p)^{c m+n}-p^n (1-p)^{c m}}{(1-p)^{c m+n}-p^{c m+n}},$$ za igralca $N$ pa verjetnost
-$$p_n = \frac{p^{c n+m}-p^m (1-p)^{c n}}{p^{c n+m}-(1-p)^{c n+m}}.$$
-V primeru, da je $p = \frac{1}{2}$, dobimo: 
-$p_m = \frac{n}{cm + n},$ $p_n = \frac{m}{cn + m}.$
-
-Če pa obe premoženji pomnožimo s konstanto, dobimo:
+\item Če obe premoženji pomnožimo s konstanto $c \in  \mathbb{N}$, za $p \neq \frac{1}{2}$ dobimo:
 $$p_m = \frac{(1-p)^{\text{cm}+\text{cn}}-(1-p)^{\text{cm}} p^{\text{cn}}}{(1-p)^{\text{cm}+\text{cn}}-p^{\text{cm}+\text{cn}}}.$$
 V primeru $p = \frac{1}{2}$ torej dobimo: 
-$p_m = \frac{cn}{cm + cn} = \frac{cn}{c(m + n)} = \frac{n}{m + n},$ torej ugotovimo, da se iskana verjetnost ne spremeni. 
+$p_m = \frac{cn}{cm + cn} = \frac{cn}{c(m + n)} = \frac{n}{m + n},$ torej ugotovimo, da se iskana verjetnost ne spremeni, kar pa ni res za $p \neq \frac{1}{2}$.
 
-\item Zanima pa nas tudi, kaj se zgodi, če $m$ in $n$ pošljemo v neskončno, torej da imata igralca neomejeno premoženja.
-Če pošljemo premoženje igralca $M$ proti neskončno, potem bo naša iskana verjetnost, da igralec $M$ bankrotira, šla proti 0. V nasprotnem primeru, ko pošljemo premoženje igralca $N$ proti neskončno, bo šla verjetnost, da bankrotira igralec $M$, proti 1.
+\item Zanima pa nas tudi, kaj se zgodi, če $m$ ali $n$ pošljemo v neskončno. 
+\begin{itemize}
+\item Naj bo najprej $p = \frac{1}{2}$.Če pošljemo premoženje igralca M proti neskončno, potem gre verjetnost, da igralec M bankrotira, proti 0. V nasprotnem primeru, ko pošljemo premoženje igralca $N$ proti neskončno, gre verjetnost, da bankrotira igralec M, proti 1.
+\item Če je $p > \frac{1}{2}$, potem je 
+$$\lim_{m \to \infty} p_m = 0.$$
+\item Če je $p < \frac{1}{2}$, potem je 
+$$\lim_{m \to \infty} p_m = 1 - \Big(\frac{p}{1-p}\Big)^n.$$
+\end{itemize}
 
-\item Kot zadnji nas zanima še poseben primer, ko gre $p$ iz leve in iz desne proti $\frac{1}{2}$. V obeh primerih dobimo enak rezultat, in sicer: 
-$$p_m = \lim_{p \to 1/2}  \frac{(1-p)^{n+m} - (1-p)^m \cdot p^n}{(1-p)^{m+n} - p^{m+n}}  =\frac{n}{m + n}.$$
+\item Kot zadnje nas zanima še kaj se zgodi v limiti $ p \to \frac{1}{2}$ :
+$$ \lim_{p \to 1/2}  \frac{(1-p)^{n+m} - (1-p)^m \cdot p^n}{(1-p)^{m+n} - p^{m+n}}  =\frac{n}{m + n}.$$
 
 \end{enumerate}
 
