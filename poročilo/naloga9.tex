@@ -193,28 +193,28 @@ $$\frac{n}{m + n} + \frac{m}{m + n} = \frac{n + m}{m+ n} = 1.$$
 
 \subsection{Računanje $E[T]$}
 \subsubsection{Predpostavka, da je $E[T] < \infty$}
-Razmislimo najprej, zakaj je $E[T] <\infty$. Če lahko čas $T$, ko se igra konča, navzgor omejimo s časom $\widetilde{T}$, katerega upanje lahko lažje izračunamo, in dokažemo, da je končno, bo sledilo, da je tudi $E[T]$ končna. Vsakič, ko vidimo $m+n-1$ zaporednih dobitkov igralca M, se je igra gotovo končala, saj je v najslabšem primeru začel z 1 enoto denarja in je blo potrebnih $m+n-1$ iger, da se je tekma zaključila.\\
+Razmislimo najprej, zakaj je $E[T] <\infty$. Če lahko čas $T$, ko se igra konča, navzgor omejimo s časom $\widetilde{T}$, katerega upanje lahko lažje izračunamo, in dokažemo, da je končno, bo sledilo, da je tudi $E[T]$ končno. Vsakič, ko vidimo $m+n-1$ zaporednih dobitkov igralca M, se je igra gotovo končala, saj je v najslabšem primeru začel z 1 enoto denarja in je blo potrebnih $m+n-1$ iger, da se je tekma zaključila.\\
 
 Definirajmo: 
 \[
-X_n := \left\{
+X_k := \left\{
 \begin{array}{rl}
-1; & \textrm{če zmaga igralec M}\\
-0; & \textrm{če zmaga igralec N}
+1; & \textrm{če zmaga igralec M v }k\textrm{-ti igri}\\
+0; & \textrm{če zmaga igralec N v }k\textrm{-ti igri}
 \end{array}
 \right.
 \]
 
 Tako lahko navzgor ocenimo $T$:
-$$T \leq inf\{ l \in \mathbb{N}: \textrm{v zaporedju } X_1, \dots, X_l \textrm{ smo videli } m+n \textrm{ zaporednih enic} \leq$$ 
+$$T \leq \inf\{ l \in \mathbb{N}: \textrm{v zaporedju } X_1, \dots, X_l \textrm{ smo videli } m+n \textrm{ zaporednih enic}\} \leq$$ 
 $$
 \begin{array} {lll} 
-\leq (m+n)\cdot inf\{ l \in \mathbb{N}:& X_1, \dots, X_{m+n}; & \textrm{vsebuje same enice, ali} \\ 
+\leq (m+n)\cdot \inf\{ l \in \mathbb{N}:& X_1, \dots, X_{m+n}; & \textrm{vsebuje same enice, ali} \\ 
 &X_{m+n+1}, \dots, X_{2(m+n)};& \textrm{vsebuje same enice, ali}\\
 &\dots \\
 &X_{(l-1)(m+n)+1}, \dots, X_{l(m+n)}; & \textrm{vsebuje same enice}\}=
 \end{array}$$
-$~~= (m+n)\cdot G_l =: \widetilde{T}$\\
+$~~=: (m+n)\cdot G =: \widetilde{T}$\\
 
 Časovno os razdelimo na intervale dolžine $m+n$, znotraj katerih čakamo, da zaporedje $\{X_l\}_{l \in \mathbb{N}}$ vsebuje same enice:
 \begin{center}
@@ -235,30 +235,33 @@ $~~= (m+n)\cdot G_l =: \widetilde{T}$\\
 \end{tikzpicture}
 \end{center}
 
-Vsako zaporedje $\{X_l\}_{l \in \mathbb{N}}$ v $\widetilde{T}$ je zaporedje Bernoullijevih spremenljivk, saj pri upanju računamo verjetnost, da se v $m+n$ ponovitvah dogodek zgodi natanko $m+n$-krat. Torej $X_l$\textasciitilde $Ber(p^{m+n})$, medtem ko je zaporedje 
-$\{X_l\}_{l \in \mathbb{N}}$ porazdeljeno geometrijsko, torej $G_l$\textasciitilde $Geom(p^{m+n})$, saj čakamo, da se dogodek, ko zaporedje vsebuje same enice, zgodi natanko enkrat. Sledi:
+V $\widetilde{T}$ vidimo čas prvega uspeha v Bernoullijevem zaporedju neodvisnih dogodkov, v katerem ima vsak dogodek verjetnost uspeha $p^{m+n}$, medtem ko je zaporedje 
+$\{X_l\}_{l \in \mathbb{N}}$ porazdeljeno geometrijsko, torej $G$\textasciitilde Geom($p^{m+n}$), saj čakamo, da se dogodek, ko zaporedje vsebuje same enice, zgodi natanko enkrat. \\
 
-$$E[G_l]=\frac{1}{p^{(m+n)}} \Longrightarrow E[\widetilde{T}] = \frac{m+n}{p^{(m+n)}} < \infty$$
+Sledi:
+
+$$E[G]=\frac{1}{p^{(m+n)}} \Longrightarrow E[\widetilde{T}] = \frac{m+n}{p^{(m+n)}} < \infty$$.
 
 \newpage
-\subsubsection{Računanje $E[T]$ za vsak $m$ in $n$}
-Za dejanski izračun matematičnega upanja števila iger rešujemo enačbo oblike: $$E[T|M=x] = p\cdot E[T|M=x+1] + (1-p)\cdot E[T|M=x-1] + 1,$$ kjer je prvotno premoženje igralca M enako x, kar zaradi lažjega zapisa prevedemo na obliko $f(x) = p\cdot f(x+1) + (1-p) \cdot f(x-1) + 1 ~ \textrm{oziroma} $ 
+\subsubsection{Računanje $E[T]$}
+
+Rešujemo enačbo oblike: $$E[T|M=x] = p\cdot E[T|M=x+1] + (1-p)\cdot E[T|M=x-1] + 1,$$ kjer je $M$ := premoženje igralca M, enako $x$ $\in \{1, \dots, m+n-1\}$ in premoženje igralca N, enako $m+n-x$. Robni pogoj je $E[T|M=0]=E[M|M=m+n]=0$, s čimer omejimo pričakovano število iger. Zaradi lažjega zapisa prevedemo enačbo na obliko $f(x) = p\cdot f(x+1) + (1-p) \cdot f(x-1) + 1 ~ \textrm{oziroma} $ 
 \begin{equation}
 \label{prvotna rekurzivna}
 p\cdot f(x+2) - f(x+1) + (1-p)\cdot f(x) = -1,
 \end{equation}
-kjer je $f(x):=E[T|M=x]$ in $x \in \mathbb{N}$. Tu smo predpostavili, da je $E[T] < \infty$, da lahko enolično zadostimo rekurzivni enačbi. 
-Rešujemo torej nehomogeno rekurzivno enačbo \footnote{Razen, ko je $p=\frac{1}{2}$, glej poseben primer \ref{Poseben primer za 1/2} } , katere rešitev je vsota homogene in ene partikularne rešitve. \\
+kjer je $f(x):=E[T|M=x]$ in $x \in \{0, \dots, m+n-2\}$. Tu smo upoštevali, da je $E[T] < \infty$. 
+Rešujemo torej nehomogeno rekurzivno enačbo, katere rešitev je vsota homogene in ene partikularne rešitve. \\
 
 Rešimo najprej homogeni del. Rešujemo enačbo: 
 \begin{equation}
 \label{homogena}
 p\cdot f(x+2) - f(x+1) + (1-p)\cdot f(x) = 0.
 \end{equation}
-S pomočjo karakterističnega polinoma dobimo enačbo: $$p\cdot  \lambda ^2 - \lambda + (1-p) = 0$$ $$\lambda _{1, 2}= \frac{1 \pm \sqrt{1 - 4p(1-p)}}{2p} = \frac{1 \pm (2p-1)}{2p}.$$
-Dobimo $\lambda _{1} = 1$ in $\lambda _{2} = \frac{1-p}{p}$. Rešitev enačbe (\ref{homogena}) je oblike $A\cdot 1^x + B(\frac{1-p}{p})^x$, oziroma: $$A+ B \bigg( \frac{1-p}{p} \bigg )^x. $$
+S pomočjo karakterističnega polinoma dobimo enačbo: $$p\cdot  \lambda ^2 - \lambda + (1-p) = 0;$$ $$\lambda _{1, 2}= \frac{1 \pm \sqrt{1 - 4p(1-p)}}{2p} = \frac{1 \pm (2p-1)}{2p}.$$
+Dobimo $\lambda _{1} = 1$ in $\lambda _{2} = \frac{1-p}{p}$. Splošna rešitev enačbe (\ref{homogena}) je\footnote{Razen, ko je $p=\frac{1}{2}$. Do \ref{Poseben primer za 1/2} predpostavimo, da je $p\neq\frac{1}{2}$} oblike $f(x) = A\cdot 1^x + B(\frac{1-p}{p})^x$, oziroma: $$f(x)=A+ B \bigg( \frac{1-p}{p} \bigg )^x. $$
 
-Partikularno rešitev iščemo z nastavkom $f(x)= Cx1^x$ oziroma $f(x)= Cx$. Vstavimo v enačbo (\ref{prvotna rekurzivna}) in dobimo: 
+Partikularno rešitev iščemo z nastavkom $f(x)=Cx$. Vstavimo v enačbo (\ref{prvotna rekurzivna}) in dobimo: 
 \begin{equation*}
 \begin{split}
  &~pC(x+2)-C(x+1)+(1-p)Cx=-1\\
@@ -270,7 +273,7 @@ Partikularno rešitev iščemo z nastavkom $f(x)= Cx1^x$ oziroma $f(x)= Cx$. Vst
  
 Partikularna rešitev je: $$f(x)=\frac{x}{1-2p}.$$
 
-Splošna rešitev\footnote{Razen, ko je $p=\frac{1}{2}$, glej poseben primer \ref{Poseben primer za 1/2} } enačbe (\ref{prvotna rekurzivna}) je: $$A + B\bigg( \frac{1-p}{p} \bigg )^x+\frac{x}{1-2p}.$$
+Splošna rešitev enačbe (\ref{prvotna rekurzivna}) je: $$A + B\bigg( \frac{1-p}{p} \bigg )^x+\frac{x}{1-2p}.$$
 
 Upoštevamo lahko še robna pogoja:
 \begin{enumerate}
@@ -300,7 +303,7 @@ Rešimo najprej homogeni del. Rešujemo enačbo:
 \frac{1}{2}f(x+2)-f(x+1)+\frac{1}{2}f(x)=0.
 \end{equation} S pomočjo karakterističnega polinoma dobimo enačbo: 
 $$\frac{1}{2}\lambda^2-\lambda+\frac{1}{2}=0.$$
-Rešitev je dvojna ničla $\lambda_{1, 2}= 1$. Rešitev enačbe (\ref{druga homogena}) je oblike: $$(Ax+B)\cdot 1^x=Ax+B.$$
+Rešitev je dvojna ničla $\lambda_{1, 2}= 1$. Splošna rešitev enačbe (\ref{druga homogena}) je oblike: $$(Ax+B)\cdot 1^x=Ax+B.$$
 Partikularno rešitev iščemo z nastavkom $f(x)=C\cdot x^2\cdot 1^x= Cx^2$. Vstavimo v enačbo (\ref{druga rekurzivna}) in dobimo:
 \begin{equation*}
 \begin{split}
@@ -336,7 +339,7 @@ $p_m = \frac{cn}{cm + cn} = \frac{cn}{c(m + n)} = \frac{n}{m + n},$ torej ugotov
 
 \item Zanima pa nas tudi, kaj se zgodi, če $m$ ali $n$ pošljemo v neskončno. 
 \begin{itemize}
-\item Naj bo najprej $p = \frac{1}{2}$.Če pošljemo premoženje igralca M proti neskončno, potem gre verjetnost, da igralec M bankrotira, proti 0. V nasprotnem primeru, ko pošljemo premoženje igralca $N$ proti neskončno, gre verjetnost, da bankrotira igralec M, proti 1.
+\item Naj bo najprej $p = \frac{1}{2}$. Če pošljemo premoženje igralca M proti neskončno, potem gre verjetnost, da igralec M bankrotira, proti 0. V nasprotnem primeru, ko pošljemo premoženje igralca $N$ proti neskončno, gre verjetnost, da bankrotira igralec M, proti 1.
 \item Če je $p > \frac{1}{2}$, potem je 
 $$\lim_{m \to \infty} p_m = 0.$$
 \item Če je $p < \frac{1}{2}$, potem je 
